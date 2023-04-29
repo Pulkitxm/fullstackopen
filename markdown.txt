@@ -1,0 +1,24 @@
+part - 0 -> https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6
+0.4 -> page with a pic 
+
+https://mermaid.live/edit#pako:eNqVkkFPwzAMhf-KlfPW3nPYCQQSbBd2Qr2YxG2trUlInA407b-T0TGEJjTIIbKen51P0dsr4y0prRK9ZnKGbhi7iEPjoJyAUdhwQCfwEv0uUbxsFHE86lPnZJsvFpOu4e52Db1ISLquk2TLlCqTqp62id2Gq5ZresMhbAlDqJ0XStMqNMIjCp1fOIpTPS_7Ty9puF8vH8F6kwdyMrksXQz_hvd3tE0esQqu-x_dw4-pa2AwX8D540iu0bU4svGuKtdVKihYcMa6mFyVj4fIXS_g229fwI5gx9IDQmADnCCSsxTJqpkaKA7ItuRnf9zSKOlpoEbpUlqMm0Y17lB8mMU_vTujtMRMM5WDLZCnrCnd4jYVlSyLj8spkJ-5nKkSsWfvvzyHD4pP8Ic
+
+code -> 
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/kuva.png
+    activate server
+    server-->>browser: Kuva.png
+    deactivate server
+
+    browser -> server: Get https://studies.cs.helsinki.fi/favicon.ico
+    activate server
+    server --> browser: favicon.ico
+    Note right of browser: page with a pic is rendered
