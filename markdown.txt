@@ -58,3 +58,21 @@ sequenceDiagram
     activate server
     server --> browser: favicon.ico
     Note right of browser: page with a pic is rendered
+
+0.6 -> Create a diagram depicting the situation where the user goes to the single-page app version of the notes app at https://studies.cs.helsinki.fi/exampleapp/spa.
+
+https://mermaid.live/edit#pako:eNp9kbFOAzEMhl_Fykx7wJihE4gJljKhkyqT-Hqhd0lInCuo6rvjU9pKqFIzWJH9-_eX-KBMsKS0yvRdyBt6crhNOLYe5ERM7IyL6Bk-U9hnStcFSU7nfI1vgQmS2_YMoTs3aigSgTxTyoDgaQ9ehLXlJFqsVtVOw8vzO_TMMeumyVyso7w0ednTkJ3fuWXnGvrBMQ6EMTbitpndNjniTYg61pJgC_vkEL5y8NC5gU70aNhNyPTvYfW-EL6L05qRS4bH-wdYrMAkkh5b1ZauTG5C0TTD9OjtIF-UyNv5j7inC666UyOlEZ2VXR1ms1ZJfaRWablaTLtWtf4oOiwc1r_eKM2p0J0q0QrIaa9KdzhkyZJ1HNJrXb6pE2SdHyGcNcc_26-7Tw
+
+Code ->
+sequenceDiagram
+    participant browser
+    participant server
+    
+    Note right of browser: user enters a new note
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: new node sent via json file 
+    activate server
+    server-->>browser: Status 201 -> created
+    deactivate server
+
+    Note right of browser: event handler renders the new node
