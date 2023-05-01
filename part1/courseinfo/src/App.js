@@ -36,26 +36,28 @@ const Total = (parts) =>{
 
 const app = () =>{
   console.log("Hello from react app");
-  const course = "Half Stack Application Developement"
-  const parts = [
-                  {
-                    name : "Fundamental of React" ,
-                    exercises : 10 
-                  } ,
-                  {
-                    name : "Using props to pass data" ,
-                    exercises : 7
-                  } ,
-                  {
-                    name : "State of a component" ,
-                    exercises : 14
-                  } 
-  ]
+  const course ={
+    name : "Half Stack Application Developement",
+    parts : [
+              {
+                name : "Fundamental of React" ,
+                exercises : 10 
+              } ,
+              {
+                name : "Using props to pass data" ,
+                exercises : 7
+              } ,
+              {
+                name : "State of a component" ,
+                exercises : 14
+              } 
+    ] 
+  }
   return (  
       <div>
-        <Header name={course} />
-        <Content parts={parts} />
-        <Total parts={parts} />
+        <Header name={course['name']} />
+        <Content parts={course['parts']} />
+        <Total parts={course['parts']} />
       </div>
     )
   }
