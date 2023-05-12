@@ -17,22 +17,29 @@ const Statistics = (props) => {
     const perc =  props.data[0] / tot
     return(
       <>
-        <p>{'Good ->'} {props.data[0]}</p>
-        <p>{'Neutral ->'} {props.data[1]}</p>
-        <p>{'Bad ->'} {props.data[2]}</p>
-        <p>{'All ->'} {tot}</p>
-        <p>{'Average ->'} {avg}</p>
-        <p>{'Positive ->'} {perc}</p>
+        <Statistic data={'Good ->'} value={props.data[0]} />
+        <Statistic data={'Neutral ->'} value={props.data[1]} />
+        <Statistic data={'Bad ->'} value={props.data[2]} />
+        <Statistic data={'All ->'} value={tot} />
+        <Statistic data={'Average ->'} value={avg} />
+        <Statistic data={'Positive ->'} value={perc} />
       </>
     )
   }
   else{
     return(
-        <p>
+      <p>
           No feedback given
         </p>
     )
   }
+}
+const Statistic = (props) => {
+  return(
+    <p>
+      {props.data} {props.value}
+    </p>
+  )
 }
 
 const App = () =>{
