@@ -43,6 +43,7 @@ const App = () =>{
       <Statistics text={'Good ->'} value={Good} />
       <Statistics text={'Neutral ->'} value={Neutral} />
       <Statistics text={'Bad ->'} value={Bad} />
+      <Statistics text={'All ->'} value={tot} />
       <Statistics text={'Average ->'} value={avg} />
       <Statistics text={'Positive ->'} value={perc} />
     </>
