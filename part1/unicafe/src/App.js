@@ -8,6 +8,13 @@ const Buttons = (props) => {
     </button>
   )
 }
+const Statistics = (props) => {
+  return(
+    <>
+      <p>{props.text} {props.value} </p>
+    </>
+  )
+}
 
 const App = () =>{
   const [Good , addGood] = useState(0)
@@ -18,24 +25,26 @@ const App = () =>{
   const tot = (Good+Neutral+Bad)
   const avg = (Good - Bad)/tot
   const perc = Good/tot
-  
+
   return(
     <>
       <h1>give feedack</h1>
       <div>
-        <Buttons text='good' handleclick={()=>addGood(6)} />
-        <Buttons text='neutral' handleclick={()=>addNeutral(2)} />
-        <Buttons text='bad' handleclick={()=>addBad(1)} />
-        {/* <Buttons text='good' handleclick={()=>addGood(Good+1)} />
+        <Buttons text='good' handleclick={()=>addGood(Good+1)} />
         <Buttons text='neutral' handleclick={()=>addNeutral(Neutral+1)} />
-        <Buttons text='bad' handleclick={()=>addBad(Bad+1)} /> */}
+        <Buttons text='bad' handleclick={()=>addBad(Bad+1)} />
       </div>
       <h1>Statistics</h1>
-      <p>{'Good  ->'}  {Good}</p>
+      {/* <p>{'Good  ->'}  {Good}</p>
       <p>{'Neutral  ->'}  {Neutral}</p>
       <p>{'Bad  ->'}  {Bad}</p>
       <p>{'Average  ->'}  {avg}</p>
-      <p>{'Positive  ->'}  {perc}</p>
+      <p>{'Positive  ->'}  {perc}</p> */}
+      <Statistics text={'Good ->'} value={Good} />
+      <Statistics text={'Neutral ->'} value={Neutral} />
+      <Statistics text={'Bad ->'} value={Bad} />
+      <Statistics text={'Average ->'} value={avg} />
+      <Statistics text={'Positive ->'} value={perc} />
     </>
   )
 }
