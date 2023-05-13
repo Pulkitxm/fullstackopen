@@ -22,7 +22,8 @@ const App = () => {
   const [points, setPoints] = useState(new Array(anecdotes.length).fill(0));
 
   const addVote = () => {
-    const newPoints = [...points];
+    const newPoints = [...points]; //copyng arrays
+    //another way is ->  const newPoints = points.slice(0, points.length);
     newPoints[selected] += 1;
     setPoints(newPoints);
   };
