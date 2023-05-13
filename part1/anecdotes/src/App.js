@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 const App = () => {
+
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -11,19 +12,35 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
-  const generateRandomNum = () => {
-    return Math.floor(Math.random() * anecdotes.length);
-  };
-  const [selected, setSelected] = useState(0)
+  const Buttons = (props) => {
+    return (
+      <button onClick={props.handleclick}>
+        {props.text}
+      </button>
+    )
+  }
+  const [points, setPoints] = useState(new Array(anecdotes.length).fill(0));
 
+  const addVote = () => {
+    const newPoints = [...points];
+    newPoints[selected] += 1;
+    setPoints(newPoints);
+  };
+  const generateRandomNum = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+  };
+
+
+  const [selected, setSelected] = useState(0)
+  // console.log(points)
   return (
     <>
-      <div>
-        {anecdotes[selected]}
-      </div>
-      <button onClick={() => setSelected(generateRandomNum)} >
-        next anecdote
-      </button>
+      {anecdotes[selected]}
+      <br />
+        points -> {points[selected]}
+      <br />
+      <Buttons text='vote' handleclick={addVote} />
+      <Buttons text='next' handleclick={generateRandomNum} />
     </>
   )
 }
