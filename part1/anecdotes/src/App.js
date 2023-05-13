@@ -31,17 +31,22 @@ const App = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
   };
 
-
+  function max0fpoints() {
+    return points.indexOf(Math.max(...points));
+  }
+  console.log(points)
   const [selected, setSelected] = useState(0)
-  // console.log(points)
   return (
     <>
+      <h1>Anecdotes of the Day</h1>
       {anecdotes[selected]}
       <br />
-        points -> {points[selected]}
+      points -> {points[selected]}
       <br />
       <Buttons text='vote' handleclick={addVote} />
       <Buttons text='next' handleclick={generateRandomNum} />
+      <h1>Anecdotes with most votes</h1>
+      {anecdotes[max0fpoints()]}
     </>
   )
 }
