@@ -22,10 +22,15 @@ const Sumofexcercises = ({ parts }) => {
   for (let i = 0; i < parts.length; i++) {
     sum += parts[i].exercises;
   }
-
+  const total = parts.reduce((s, p) => 
+  {
+    return s + p.exercises
+  },0)
+  console.log(total)
+  
   return (
     <>
-      {'total of '} {sum} {'excersies '}
+      {'total of '} {sum} {total} {'excersies '}
     </>
   )
 }
@@ -35,7 +40,7 @@ const Course = ({ course }) => {
     <>
       <Header text={course.name} />
       <Content parts={course.parts} />
-      <Sumofexcercises parts={course.parts}/>
+      <Sumofexcercises parts={course.parts} />
     </>
   )
 }
