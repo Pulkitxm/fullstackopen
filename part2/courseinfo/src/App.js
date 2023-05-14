@@ -1,38 +1,7 @@
-const Header = ({ text }) => <h1>{text}</h1>
-const Part = ({ part }) => {
-  return (
-    <>
-      <p>{part.name} {part.exercises}</p>
-    </>
-  )
-}
-
-const Content = ({ parts }) => {
-  return (
-    <>
-      {parts.map(part => (
-        <Part key={part.id} part={part} />
-      ))}
-    </>
-  );
-};
-
-const Sumofexcercises = ({ parts }) => {
-  let sum = 0;
-  for (let i = 0; i < parts.length; i++) {
-    sum += parts[i].exercises;
-  }
-  const total = parts.reduce((s, p) => {
-    return s + p.exercises
-  }, 0)
-  console.log(total)
-
-  return (
-    <>
-      <b>{'total of '}{total} {'excersies '}</b>
-    </>
-  )
-}
+import Header from './Components/Header'
+import Part from './Components/Part'
+import Content from './Components/Content'
+import Sumofexcercises from './Components/Sumofexcercises'
 
 const Courses = ({ courses }) => {
   return (
@@ -40,9 +9,9 @@ const Courses = ({ courses }) => {
       <Course course={courses[0]} />
       <Course course={courses[1]} />
     </>
-    )
-  }
-  const Course = ({ course }) => {
+  )
+}
+const Course = ({ course }) => {
   return (
     <>
       <Header text={course.name} />
