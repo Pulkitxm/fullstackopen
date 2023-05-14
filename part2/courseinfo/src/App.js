@@ -1,22 +1,11 @@
-import Header from './Components/Header'
+import Course from './Components/Course'
 import Part from './Components/Part'
-import Content from './Components/Content'
-import Sumofexcercises from './Components/Sumofexcercises'
 
 const Courses = ({ courses }) => {
   return (
     <>
       <Course course={courses[0]} />
       <Course course={courses[1]} />
-    </>
-  )
-}
-const Course = ({ course }) => {
-  return (
-    <>
-      <Header text={course.name} />
-      <Content parts={course.parts} />
-      <Sumofexcercises parts={course.parts} />
     </>
   )
 }
