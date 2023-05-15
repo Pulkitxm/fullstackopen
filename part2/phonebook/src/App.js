@@ -11,14 +11,24 @@ const App = () => {
   ])
 
   const addPerson = (event) => {
+    console.log(persons)
     event.preventDefault();
-    setPersons(persons.concat({ name: newPerson }));
-    addnewPerson("");
-    // console.log(persons)
-    // setPersons(persons.concat({ name: newPerson }))
-    // addnewPerson('')
+
+    var flag = false;
+    persons.forEach(element => {
+      if (element.name == newPerson) {
+        flag = true
+      }
+    });
+
+    if (flag) {
+      alert(newPerson + " already Exists")
+    } else {
+      setPersons(persons.concat({ name: newPerson[0] }));
+      addnewPerson("");
+    }
   }
-  
+
   const handlenewchanges = (event) => {
     // console.log(event.target.value)
     addnewPerson(event.target.value)
@@ -39,9 +49,9 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       {persons.map((person) => (
-          <p key={person.name}>{person.name}</p> 
+        <p key={person.name}>{person.name}</p>
       ))}
-      
+
       {/* {console.log(persons)} */}
     </div>
   )
