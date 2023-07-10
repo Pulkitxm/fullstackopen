@@ -1,10 +1,14 @@
 import { useState } from 'react'
 
-const Filter = ({updatedpersons}) => updatedpersons.map((person) => (
-                      <div key={person.id}>
-                        {person.name} {person.number}
-                      </div>
-                    ))
+import Search from './components/Search'
+import PersonFrom from './components/PersonForm'
+import Filter from './components/Filter'
+
+const Heading = ({ text }) => {
+  return (
+    <h2>{text}</h2>
+  )
+}
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -52,26 +56,11 @@ const App = () => {
   let updatedpersons = persons.filter(person => person.name.includes(search))
   return (
     <div>
-      <h2>Phonebook</h2>
-      <form>
-        <div>
-          <label htmlFor="filter">filter shown with:</label>
-          <input type="text" value={search} onChange={handlechange_search} id='filter' />
-        </div>
-        <h3>add a new</h3>
-        <div>
-          <label htmlFor="name">name:</label>
-          <input id='name' value={newName} onChange={handlechange_person} />
-        </div>
-        <div>
-          <label htmlFor="number"> number:</label>
-          <input id='number' value={newNumber} type={'number'} onChange={handlechange_number} />
-        </div>
-        <div>
-          <button type="submit" onClick={addperson} >add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
+      <Heading text='PhoneBook' />
+      <Search search={search} handlechange_search={handlechange_search} />
+      <Heading text='Add a new' />
+      <PersonFrom newName={newName} addperson={addperson} handlechange_person={handlechange_person} newNumber={newNumber} handlechange_number={handlechange_number} />
+      <Heading text='Numbers' />
       <Filter updatedpersons={updatedpersons} />
     </div>
   )
