@@ -22,7 +22,7 @@ const App = () => {
     noteServices
     .getAll()
     .then(response=>{
-        console.log(response);
+        // console.log(response);
         setPersons(response);
       }
     )
@@ -47,7 +47,15 @@ const App = () => {
 
     const nameExists = persons.find((person) => person.name === newName);
     if (nameExists) {
-      alert(`${newName} already exists in the phonebook!`);
+      // alert(`${newName} already exists in the phonebook!`);
+      if (window.confirm(`${newName} is already added to phonebook , replace the old number with a new one ?`))
+      {
+        // console.log(nameExists);
+        nameExists.number = newNumber;
+        const newPersons = persons.map(person=> (person.id === nameExists.id) ? nameExists : person )
+        noteServices.update(nameExists.id,nameExists)
+        setPersons(newPersons)
+      }
     }
     else {
       const newObject = {
@@ -57,7 +65,7 @@ const App = () => {
       const updatedPersons = [...persons, newObject];
       setPersons(updatedPersons);
       setNewName('');
-      console.log(updatedPersons);
+      // console.log(updatedPersons);
       // axios.post('http://localhost:3001/persons',newObject)
       noteServices
         .create(newObject)
