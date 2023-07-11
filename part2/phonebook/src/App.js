@@ -48,13 +48,15 @@ const App = () => {
       alert(`${newName} already exists in the phonebook!`);
     }
     else {
-      const updatedPersons = [...persons, {
+      const newObject = {
         name: newName,
-        number:newNumber
-      }];
+        number: newNumber
+      };
+      const updatedPersons = [...persons, newObject];
       setPersons(updatedPersons);
       setNewName('');
       console.log(updatedPersons);
+      axios.post('http://localhost:3001/persons',newObject)
     }
   }
   let updatedpersons = persons.filter((person) =>
