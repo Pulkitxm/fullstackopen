@@ -73,7 +73,7 @@ const App = () => {
       <Heading text='Add a new' />
       <PersonFrom newName={newName} addperson={addperson} handlechange_person={handlechange_person} newNumber={newNumber} handlechange_number={handlechange_number} />
       <Heading text='Numbers' />
-      <Filter updatedpersons={updatedpersons} />
+      <Filter persons={persons} setPersons={setPersons} updatedpersons={updatedpersons} />
     </div>
   )
 }
