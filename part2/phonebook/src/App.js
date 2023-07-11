@@ -1,9 +1,9 @@
 import { useState,useEffect } from 'react'
-import axios from 'axios'
 
 import Search from './components/Search'
 import PersonFrom from './components/PersonForm'
 import Filter from './components/Filter'
+import noteServices from './services/Notes'
 
 const Heading = ({ text }) => {
   return (
@@ -18,10 +18,12 @@ const App = () => {
   const [search, setSearch] = useState("");
   
   useEffect(()=>{
-    axios.get('http://localhost:3001/persons')
+    // axios.get('http://localhost:3001/persons')
+    noteServices
+    .getAll()
     .then(response=>{
-        console.log(response.data);
-        setPersons(response.data);
+        console.log(response);
+        setPersons(response);
       }
     )
   },[])
@@ -56,7 +58,9 @@ const App = () => {
       setPersons(updatedPersons);
       setNewName('');
       console.log(updatedPersons);
-      axios.post('http://localhost:3001/persons',newObject)
+      // axios.post('http://localhost:3001/persons',newObject)
+      noteServices
+        .create(newObject)
     }
   }
   let updatedpersons = persons.filter((person) =>
