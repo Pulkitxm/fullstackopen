@@ -54,8 +54,10 @@ const App = () => {
         nameExists.number = newNumber;
         const newPersons = persons.map(person => (person.id === nameExists.id) ? nameExists : person)
         noteServices.update(nameExists.id, nameExists)
-        setPersons(newPersons)
-        showNotification(`${newName} is updated with ${newNumber}`);
+        .catch(()=>{
+          showNotification(`Information for ${nameExists.name} is deleted from server`)
+          setPersons(persons.filter(n=>n.id!==nameExists.id))
+        })
       }
     }
     else {
