@@ -57,7 +57,9 @@ const App = () => {
       console.log(updatedPersons);
     }
   }
-  let updatedpersons = persons.filter(person => person.name.includes(search))
+  let updatedpersons = persons.filter((person) =>
+    person.name && person.name.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div>
       <Heading text='PhoneBook' />
