@@ -28,6 +28,12 @@ app.get('/' , (req,res) =>{
     res.send("Hello")
 })
 
+app.get('/info' , (req,res) =>{
+    res.send(`<p>Phonebook has info for ${notes.length} people</p>
+              <p>${new Date()}</p>
+    `)
+})
+
 app.get('/api/persons',(req,res)=>{
     res.send(notes)
 })
