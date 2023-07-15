@@ -38,4 +38,16 @@ app.get('/api/persons',(req,res)=>{
     res.send(notes)
 })
 
+app.get('/api/persons/:id',(req,res)=>{
+    const id = Number(req.params.id);
+    const note = notes.filter(n=>n.id===id);
+    // if (note){
+    if (note.length===0){
+        res.status(404).end()
+    }else{
+        res.json(note);
+    }
+    
+})
+
 app.listen(3001)
