@@ -64,22 +64,40 @@ const generateId = () => Number((Math.random() * 10000000000000000).toFixed(0));
 
 app.post('/api/persons', (req, res) => {
     const body = req.body
+    // console.log(body.name,body.name.length!=0==true);
+    // console.log(body.number,body.number.length!=0==true);
+    // console.log(persons.filter(person => person.name === body.name),(persons.filter(person => person.name === body.name).length ===0)==true);
+    if ((body.name.length != 0 ) &&
+        (body.number.length != 0 ) &&
+        (persons.filter(person => person.name === body.name).length === 0)
+    ) {
+        const person = {
+            id: generateId(),
+            name: body.name,
+            number: body.number
+        }
 
-    if (!body.name) {
+        persons = persons.concat(person)
+
+        res.json(person)
+    }else if (!body.name && !body.number){
         return res.status(400).json({
-            error: 'content missing'
+            error: 'name and number missing'
+        })
+    }else if (!body.name){
+        return res.status(400).json({
+            error: 'name missing'
+        })
+    }else if (!body.number){
+        return res.status(400).json({
+            error: 'number missing'
+        })
+    }else{
+        return res.status(400).json({
+            error: 'duplicate items'
         })
     }
-
-    const person = {
-        id: generateId(),
-        name: body.name,
-        number: body.number
-    }
-
-    persons = persons.concat(person)
-
-    res.json(person)
+    // console.log(persons);
 });
 
 app.listen(3001)
