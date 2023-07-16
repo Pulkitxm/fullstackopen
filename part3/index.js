@@ -23,8 +23,22 @@ let persons = [
 
 const express = require("express")
 const app = express()
+var morgan = require('morgan')
+
+// morgan(function (tokens, req, res) {
+//     return [
+//         tokens.method(req, res),
+//         tokens.url(req, res),
+//         tokens.status(req, res),
+//         tokens.res(req, res, 'content-length'), '-',
+//         tokens['response-time'](req, res), 'ms'
+//     ].join(' ')
+// });
 
 app.use(express.json())
+// app.use(morgan())
+// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+app.use(morgan('tiny'))
 
 app.get('/' , (req,res) =>{
     res.send("Hello")
