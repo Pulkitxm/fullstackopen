@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "dev": "nodemon index.js"
   },
+  "proxy": "http://localhost:3002/",
   "author": "Pulkit",
   "license": "ISC",
   "devDependencies": {
