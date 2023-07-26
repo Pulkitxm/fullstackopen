@@ -20,11 +20,14 @@ let persons = [
         "number": "39-23-6423122"
     }
 ]
-
+const mongoose = require('mongoose')
 const express = require("express")
 const app = express()
 var morgan = require('morgan')
 app.use(express.static('build'))
+require('dotenv').config()
+
+const Person = require('./models/Person')
 
 // morgan(function (tokens, req, res) {
 //     return [
@@ -42,6 +45,8 @@ app.use(express.json())
 morgan.token('req-body', (req) => JSON.stringify(req.body));
 app.use(morgan(':method :url :status :response-time ms - :req-body'));
 
+const url = process.env.url;
+
 // app.get('/' , (req,res) =>{
 //     res.send("Hello")
 // })
@@ -53,7 +58,9 @@ app.get('/info' , (req,res) =>{
 })
 
 app.get('/api/persons',(req,res)=>{
-    res.send(persons)
+    Person.find({}).then(person=>{
+        res.json(person)
+    })
 })
 
 app.get('/api/persons/:id',(req,res)=>{
@@ -116,4 +123,7 @@ app.post('/api/persons', (req, res) => {
     // console.log(persons);
 });
 
-app.listen(3001)
+const PORT = process.env.port
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+})
