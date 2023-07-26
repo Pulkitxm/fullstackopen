@@ -83,8 +83,6 @@ app.delete('/api/persons/:id',(req,res)=>{
     res.status(204).end()
 })
 
-const generateId = () => Number((Math.random() * 10000000000000000).toFixed(0));
-
 app.post('/api/persons', (req, res) => {
     const body = req.body
     // console.log(body.name,body.name.length!=0==true);
@@ -92,17 +90,18 @@ app.post('/api/persons', (req, res) => {
     // console.log(persons.filter(person => person.name === body.name),(persons.filter(person => person.name === body.name).length ===0)==true);
     if ((body.name.length != 0 ) &&
         (body.number.length != 0 ) &&
+        // (persons.filter(person => person.name === body.name).length === 0)
         (persons.filter(person => person.name === body.name).length === 0)
     ) {
-        const person = {
-            id: generateId(),
-            name: body.name,
-            number: body.number
-        }
+        const person = new Person(
+            {
+                name: body.name,
+                number: body.number
+            }
+        )
+        
+        person.save().then(svaedPerson=>res.json(svaedPerson))
 
-        persons = persons.concat(person)
-
-        res.json(person)
     }else if (!body.name && !body.number){
         return res.status(400).json({
             error: 'name and number missing'
