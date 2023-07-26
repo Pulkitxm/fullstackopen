@@ -94,32 +94,31 @@ app.delete('/api/persons/:id', (request, response,next) => {
         .catch(error => next(error))
 })
 
-app.put('/api/person/:id', (request, response,next) => {
+app.put('/api/persons/:id', (request, response,next) => {
     const body = request.body
 
-    const person = new Person(
-        {
-            content: body.content,
-            important: body.important,
-        }
-    )
+    const contact = {
+        name: body.name,
+        number: body.number
+    }
 
-    Note.findByIdAndUpdate(request.params.id, person, { new: true })
+    Person
+        .findByIdAndUpdate(request.params.id, contact, { new: true })
         .then(updatedPerson => {
             response.json(updatedPerson)
         })
         .catch(error => next(error))
 })
 
+
 app.post('/api/persons', (req, res) => {
     const body = req.body
     // console.log(body.name,body.name.length!=0==true);
     // console.log(body.number,body.number.length!=0==true);
     // console.log(persons.filter(person => person.name === body.name),(persons.filter(person => person.name === body.name).length ===0)==true);
+    console.log(!Person.find({ name: body.name }));
     if ((body.name.length != 0 ) &&
-        (body.number.length != 0 ) &&
-        // (persons.filter(person => person.name === body.name).length === 0)
-        (persons.filter(person => person.name === body.name).length === 0)
+        (body.number.length != 0 ) 
     ) {
         const person = new Person(
             {
@@ -142,13 +141,17 @@ app.post('/api/persons', (req, res) => {
         return res.status(400).json({
             error: 'number missing'
         })
-    }else{
-        return res.status(400).json({
-            error: 'duplicate items'
-        })
     }
+    
+    persons.save()
+        .then(savedPerson=>res.json(savedPerson))
+        .catch(error => next(error))
+    
+
     // console.log(persons);
 });
+
+
 
 app.use(errorHandler)
 
