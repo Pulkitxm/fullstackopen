@@ -144,10 +144,15 @@ app.post('/api/persons', (req, res) => {
             error: 'number missing'
         })
     }
-    
-    persons.save()
+    const person = new Person(
+        {
+            name: body.name,
+            number: body.number
+        }
+    )
+    person.save()
         .then(savedPerson=>res.json(savedPerson))
-        .catch(error => next(error))
+        // .catch(error =>  next(error))
     
 
     // console.log(persons);

@@ -9,7 +9,9 @@
     "build": "react-scripts build",
     "dev": "nodemon index.js"
   },
-  "proxy": "http://localhost:3002/",
+  "proxy": "http://localhost:3001/",
+  "build:ui": "rm -rf build && cd ../frontend && npm run build && cp -r build ../backend",
+  "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
   "author": "Pulkit",
   "license": "ISC",
   "devDependencies": {

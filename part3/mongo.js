@@ -9,8 +9,7 @@ const password = process.argv[2]
 const name = process.argv[3]
 const number = process.argv[4]
 // gwHxC6yyacED8MjM
-const url =
-    `mongodb+srv://pulkitxm:${ password }@cluster0.nyotmfb.mongodb.net/?retryWrites=true&w=majority`
+const url =process.env.url
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
@@ -24,9 +23,9 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema)
 
 const person = new Person({
-    id:name+number,
-    name:name,
-    number:number
+    id: name + number,
+    name: name,
+    number: number
 })
 
 person.save().then(result => {
