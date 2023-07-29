@@ -1,0 +1,7 @@
+GET http://localhost:3001/api/notes
+# Content-Type: application/json
+
+# {
+#     "name": "Pulkit",
+#     "number": "9654950988"
+# }
