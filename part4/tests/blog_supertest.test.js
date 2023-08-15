@@ -84,6 +84,29 @@ test('deleting a single blog', async () => {
     expect(length2).toBe(length1 - 1);
 }, 100000)
 
+test('updating single blog', async () => {
+    let blogs = await api.get('/api/blogs');
+    // console.log("blogs",blogs.body);
+
+    const newNote = {
+        title: "Type wars",
+        author: "Robert C. Martin",
+        url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+        likes: 2,
+        id: "64db42b3e568e88892a63aa1"
+    }
+
+    await api
+        .put(`/api/blogs/${newNote.id}`)
+        .send(newNote)
+        .expect(200)
+
+    blogs = await api.get('/api/blogs');
+    // console.log("blogs",blogs.body);
+    
+    expect(blogs.body[blogs.body.length - 1].title).toBe(newNote.title);
+}, 100000)
+
 afterAll(async () => {
     await mongoose.connection.close()
 })
