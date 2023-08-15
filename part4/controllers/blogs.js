@@ -43,7 +43,7 @@ blogsRouter.post('/api/blogs', (request, response, next) => {
 blogsRouter.delete('/api/blogs/:id', (request, response, next) => {
     Blog.findByIdAndRemove(request.params.id)
         .then(() => {
-            response.status(204).end()
+            response.status(200).end()
         })
         .catch(error => next(error))
 })

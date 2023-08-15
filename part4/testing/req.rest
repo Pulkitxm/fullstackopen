@@ -1,7 +1,9 @@
-GET http://localhost:3001/api/notes
+# GET http://localhost:3001/api/notes
 # Content-Type: application/json
 
 # {
 #     "name": "Pulkit",
 #     "number": "9654950988"
 # }
+
+DELETE localhost:3000/api/blogs/64db213fb50f5380159bf2f6
