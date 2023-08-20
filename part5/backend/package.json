@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "build:ui": "rm -rf build && cd ../frontend && npm run build && cp -r build ../backend",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+  },
+  "proxy": "http://localhost:3001",
+  "author": "Pulkit",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.0",
+    "mongoose-unique-validator": "^4.0.0",
+    "vue-json-pretty": "^2.2.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "globalTeardown": "./tests/teardown.js"
+  }
+}

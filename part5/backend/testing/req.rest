@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "username": "pulkit123",
+    "password": "pulkit123"
+}
+
+# DELETE localhost:3000/api/blogs/64db213fb50f5380159bf2f6
