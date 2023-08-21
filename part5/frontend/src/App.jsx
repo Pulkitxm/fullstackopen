@@ -5,9 +5,13 @@ import loginService from './services/login'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [username, setUsername] = useState('pulkit')
-  const [password, setPassword] = useState('pulkit123') 
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('') 
+  const [title, setTitle] = useState('') 
+  const [author, setAuthor] = useState('') 
+  const [url, setUrl] = useState('') 
   const [user, setUser] = useState(null)
+  const [token, setToken] = useState('')
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -20,6 +24,7 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
+      setToken(`Bearer ${user.token}`)
     }
   }, [])
 
@@ -35,21 +40,39 @@ const App = () => {
       window.localStorage.setItem(
         'loggedNoteappUser', JSON.stringify(user)
       ) 
+      setToken(`Bearer ${user.token}`)
       setUser(user)
-      console.log(user);
+      // console.log(user);
       setUsername('')
       setPassword('')
     } catch (exception) {
-      // setErrorMessage('Wrong credentials')
       setErrorMessage(exception)
     }
   }
   const logout = () =>{
-    console.log(window.localStorage);
     if (window.localStorage.length) {
       window.localStorage.removeItem('loggedNoteappUser')
     }
     window.location.reload();
+  }
+  const handleBogSubmit = async (e) =>{
+    e.preventDefault();
+
+    try {
+      // console.log("token",token);
+      const newObject = {
+        title, author, url, likes: 10
+      }
+      const bog = await blogService.create(
+        { newObject: newObject , token: token})
+        // console.log(bog);
+      setBlogs(blogs.concat(bog));
+      setTitle("");
+      setAuthor("");
+      setUrl("");
+    } catch (exception) {
+      setErrorMessage(exception)
+    }
   }
 
   const loginForm = () =>{
@@ -88,26 +111,39 @@ const App = () => {
           <h1>blogs</h1>
           <p>{user.name} logged in <button onClick={logout} >logout</button> </p>
 
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleBogSubmit}>
+          
           <div>
-            title
+            title:
             <input
               type="text"
-              value={username}
+              value={title}
               name="Username"
-              onChange={({ target }) => setUsername(target.value)}
+              onChange={({ target }) => setTitle(target.value)}
             />
           </div>
+          
           <div>
-            password
+            author:
             <input
-              type="password"
-              value={password}
-              name="Password"
-              onChange={({ target }) => setPassword(target.value)}
+              type="text"
+              value={author}
+              name="Username"
+              onChange={({ target }) => setAuthor(target.value)}
             />
           </div>
-          <button type="submit">login</button>
+          
+          <div>
+            url:
+            <input
+              type="text"
+              value={url}
+              name="Username"
+              onChange={({ target }) => setUrl(target.value)}
+            />
+          </div>
+         
+          <button type="submit">Submit</button>
         </form>
 
 
