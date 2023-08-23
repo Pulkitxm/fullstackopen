@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react'
 import Blog from './components/Blog'
+import LoginForm from './components/LoginForm'
+import BlogForm from './components/BlogForm'
+import ToggleContent from './components/ToggleContent'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
 const App = () => {
+  let i = 0;
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('') 
-  const [title, setTitle] = useState('') 
+  const [title, setTitle] = useState("") 
   const [author, setAuthor] = useState('') 
   const [url, setUrl] = useState('') 
   const [user, setUser] = useState(null)
@@ -58,106 +62,61 @@ const App = () => {
   const handleBogSubmit = async (e) =>{
     e.preventDefault();
 
-    try {
-      // console.log("token",token);
-      const newObject = {
-        title, author, url, likes: 10
-      }
-      const bog = await blogService.create(
-        { newObject: newObject , token: token})
-        // console.log(bog);
-      setBlogs(blogs.concat(bog));
-      setTitle("");
-      setAuthor("");
-      setUrl("");
-    } catch (exception) {
-      setErrorMessage(exception)
+    const newObject = {
+      title, author, url, likes: 10
     }
+    const bog = await blogService.create(
+      { newObject: newObject , token: token})
+    setBlogs(blogs.concat(bog));
+    setTitle("");
+    setAuthor("");
+    setUrl("");
+  } 
+  const blogForm = () =>{
+    return(
+      <>
+        <h1>blogs</h1>
+        <p>{user.name} logged in <button onClick={logout}>logout</button></p>
+        <ToggleContent label='Add a new Note' >
+          <BlogForm
+            handleBogSubmit={handleBogSubmit}
+            title={title}
+            setTitle={setTitle}
+            author={author}
+            setAuthor={setAuthor}
+            url={url}
+            setUrl={setUrl}
+          />
+        </ToggleContent>
+      </>
+    )
   }
-
   const loginForm = () =>{
     return(
       <>
         <h1>log in to application</h1>
-        <form onSubmit={handleLogin}>
-          <div>
-            username
-            <input
-              type="text"
-              value={username}
-              name="Username"
-              onChange={({ target }) => setUsername(target.value)}
-            />
-          </div>
-          <div>
-            password
-            <input
-              type="password"
-              value={password}
-              name="Password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-          </div>
-          <button type="submit">login</button>
-        </form>
+        <ToggleContent label='Login' >
+          <LoginForm
+            handleLogin={handleLogin}
+            username={username}
+            setPassword={setPassword}
+            setUsername={setUsername}
+            password={password}
+          />
+        </ToggleContent>
       </>
-    )
-  }
-
-  const blogForm = ({blogs}) =>{
-    
-    return (
-        <>
-          <h1>blogs</h1>
-          <p>{user.name} logged in <button onClick={logout} >logout</button> </p>
-
-        <form onSubmit={handleBogSubmit}>
-          
-          <div>
-            title:
-            <input
-              type="text"
-              value={title}
-              name="Username"
-              onChange={({ target }) => setTitle(target.value)}
-            />
-          </div>
-          
-          <div>
-            author:
-            <input
-              type="text"
-              value={author}
-              name="Username"
-              onChange={({ target }) => setAuthor(target.value)}
-            />
-          </div>
-          
-          <div>
-            url:
-            <input
-              type="text"
-              value={url}
-              name="Username"
-              onChange={({ target }) => setUrl(target.value)}
-            />
-          </div>
-         
-          <button type="submit">Submit</button>
-        </form>
-
-
-          {
-            blogs.map(blog =>
-              <Blog key={blog.id} blog={blog} />
-            )
-          }
-        </>
     )
   }
   return (
     <div>
       {user ? blogForm({ blogs }) : loginForm()}
+      {
+        blogs.map(blog =>{
+          i+=1;
+          return <Blog key={blog.id} blog={blog} i={i} />
+        }
+        )
+      }
     </div>
   )
 }
