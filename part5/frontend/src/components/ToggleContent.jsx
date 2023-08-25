@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import blogService from '../services/blogs'
 
 const ToggleContent = (props) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [author, setAuthor] = useState('')
 
   if (props.type === 'form') {
@@ -16,6 +17,15 @@ const ToggleContent = (props) => {
     )
   } else if (props.type === 'blog') {
 
+    const [like, setLike] = useState(props.blog.likes)
+    const handleLike = () => {
+      setLike(like+1)
+      props.blog.likes+=1;
+      let id = props.blog.id
+      let newObject = { ...props.blog, author:author.id , likes: like+1 }
+      blogService.update(id , newObject) 
+    }
+
     useEffect(() => {
       props.author.then((Author) => {
         setAuthor(Author);
@@ -24,15 +34,13 @@ const ToggleContent = (props) => {
 
     return (
       <div className='note' >
-        {props.i}{') '}title: <b>{props.blog.title}</b>
+        {props.i}{') '}title: <b>{props.blog.title}</b> &nbsp; 
         {(visible) ?
           <>
             <br />
-            likes:{' ' + props.blog.likes}
-            <br />
             url: <a href={props.blog.url}>{props.blog.url}</a>
             <br />
-            likes: {props.blog.likes}
+            <p style={{display:'inline',cursor:'pointer',userSelect:'none'}} onClick={handleLike}  >👍</p>: {like}
             <br />
             author: {author}
             <br />
