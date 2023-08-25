@@ -3,6 +3,7 @@ import usersService from '../services/users'
 
 
 const getAuthor = async (blog) => {
+  // console.log(blog.author);
   if (blog.author.id){
     return blog.author.name
   }else{
@@ -13,9 +14,9 @@ const getAuthor = async (blog) => {
   }
 }
 
-const Blog = ({ blog,i,user }) => {
+const Blog = ({ blog, i, user, SortedBlogs,setSortedBlogs }) => {
   return(
-    <ToggleContent label='view' type='blog' blog={blog} i={i} author={getAuthor(blog)} />
+    <ToggleContent label='view' type='blog' blog={blog} i={i} author={getAuthor(blog)} user={user} SortedBlogs={SortedBlogs} setSortedBlogs={setSortedBlogs} />
   )
 }
 

@@ -10,19 +10,30 @@ import loginService from './services/login'
 const App = () => {
   let i = 0;
   const [blogs, setBlogs] = useState([])
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('') 
-  const [title, setTitle] = useState("") 
-  const [author, setAuthor] = useState('') 
-  const [url, setUrl] = useState('') 
+  const [username, setUsername] = useState('pulkit')
+  const [password, setPassword] = useState('pulkit123') 
+  const [title, setTitle] = useState("Pulkit's New Blog") 
+  const [author, setAuthor] = useState('64dcf3025d49b139b608301e') 
+  const [url, setUrl] = useState('https://devpulkit.vercel.app/') 
   const [user, setUser] = useState(null)
   const [token, setToken] = useState('')
-
+  const [SortedBlogs, setSortedBlogs] = useState([])
+  
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
-    )  
+    blogService.getAll().then(blogs =>{
+      setBlogs(blogs)
+      setSortedBlogs([])
+      setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes))
+    }
+      )  
   }, [])
+  useEffect(() => {
+    setSortedBlogs([])
+    setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
+  }, [blogs])
+  // useEffect(() => {
+  //   console.log("SortedBlogs", SortedBlogs);
+  // }, [SortedBlogs])
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
@@ -112,11 +123,12 @@ const App = () => {
     <div>
       {user ? blogForm({ blogs }) : loginForm()}
       {
-        blogs.map(blog =>{
-          i+=1;
-          return <Blog key={blog.id} blog={blog} i={i} user={user} />
-        }
-        )
+        (SortedBlogs)?
+          SortedBlogs.map(blog => {
+            i += 1;
+            return <Blog key={blog.id} blog={blog} i={i} user={user} SortedBlogs={SortedBlogs} setSortedBlogs={setSortedBlogs} />
+          }
+        ):null
       }
     </div>
   )

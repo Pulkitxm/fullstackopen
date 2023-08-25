@@ -19,11 +19,18 @@ const ToggleContent = (props) => {
 
     const [like, setLike] = useState(props.blog.likes)
     const handleLike = () => {
-      setLike(like+1)
-      props.blog.likes+=1;
-      let id = props.blog.id
-      let newObject = { ...props.blog, author:author.id , likes: like+1 }
-      blogService.update(id , newObject) 
+      if (props.user){
+        setLike(like + 1)
+        props.blog.likes += 1;
+        let id = props.blog.id
+        let newObject1 = { ...props.blog, author: author.id, likes: like + 1 }
+        let newObject2 = { ...props.blog, likes: like + 1 }
+        blogService.update(id, newObject1)
+        let UpdatedBogs = [...props.SortedBlogs.filter(blog => blog.id !== id), newObject2]
+        UpdatedBogs = [...UpdatedBogs].sort((a, b) => b.likes - a.likes)
+        props.setSortedBlogs([])
+        props.setSortedBlogs(UpdatedBogs)
+      }
     }
 
     useEffect(() => {
