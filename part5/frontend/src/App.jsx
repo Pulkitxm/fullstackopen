@@ -1,3 +1,4 @@
+import './App.css'
 import { useState, useEffect } from 'react'
 import Blog from './components/Blog'
 import LoginForm from './components/LoginForm'
@@ -77,7 +78,7 @@ const App = () => {
       <>
         <h1>blogs</h1>
         <p>{user.name} logged in <button onClick={logout}>logout</button></p>
-        <ToggleContent label='Add a new Note' >
+        <ToggleContent label='Add a new Note' type='form' >
           <BlogForm
             handleBogSubmit={handleBogSubmit}
             title={title}
@@ -95,7 +96,7 @@ const App = () => {
     return(
       <>
         <h1>log in to application</h1>
-        <ToggleContent label='Login' >
+        <ToggleContent label='Login' type='form' >
           <LoginForm
             handleLogin={handleLogin}
             username={username}
@@ -113,7 +114,7 @@ const App = () => {
       {
         blogs.map(blog =>{
           i+=1;
-          return <Blog key={blog.id} blog={blog} i={i} />
+          return <Blog key={blog.id} blog={blog} i={i} user={user} />
         }
         )
       }

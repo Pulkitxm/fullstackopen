@@ -1,14 +1,9 @@
-const Blog = ({ blog,i }) => {
+import ToggleContent from './ToggleContent'
+
+const Blog = ({ blog,i,user }) => {
   // console.log(blog);
   return(
-    <div>
-      <br/>
-      {i}{') '}title: <b>{blog.title}</b> 
-      <br/>
-      likes:{' '+blog.likes}
-      <br/>
-      url: <a href={blog.url}>{blog.url}</a>
-    </div>  
+    <ToggleContent label='view' type='blog' blog={blog} i={i} user={user} />
   )
 }
 

@@ -24,4 +24,16 @@ usersRouter.get('/', async (request, response) => {
     response.json(users)
 })
 
+usersRouter.get('/:id', async (request, response, next) => {
+    User.findById(request.params.id)
+        .then(user => {
+            if (user) {
+                response.json(user)
+            } else {
+                response.status(404).end()
+            }
+        })
+        .catch(error => next(error))
+})
+
 module.exports = usersRouter
