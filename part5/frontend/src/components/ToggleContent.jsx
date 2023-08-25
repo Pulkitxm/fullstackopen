@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const ToggleContent = (props) => {
-  const [visible, setVisible] = useState(false)
-  if (props.type==='form'){
+  const [visible, setVisible] = useState(false);
+  const [author, setAuthor] = useState('')
+
+  if (props.type === 'form') {
     return (
       <div >
         {(visible) ? props.children : (<></>)}
@@ -13,6 +15,12 @@ const ToggleContent = (props) => {
       </div>
     )
   } else if (props.type === 'blog') {
+
+    useEffect(() => {
+      props.author.then((Author) => {
+        setAuthor(Author);
+      });
+    }, [props.author, props.type]);
 
     return (
       <div className='note' >
@@ -26,7 +34,7 @@ const ToggleContent = (props) => {
             <br />
             likes: {props.blog.likes}
             <br />
-            author: {props.blog.author.name}
+            author: {author}
             <br />
           </>
 
