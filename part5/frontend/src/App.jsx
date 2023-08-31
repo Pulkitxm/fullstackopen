@@ -75,7 +75,7 @@ const App = () => {
     e.preventDefault();
 
     const newObject = {
-      title, author, url, likes: 10
+      title, author, url, likes: 0
     }
     const bog = await blogService.create(
       { newObject: newObject , token: token})
@@ -84,6 +84,12 @@ const App = () => {
     setAuthor("");
     setUrl("");
   } 
+  const handleDelete = (blog) =>{
+    blogService.Delete(blog.id);
+    if (window.confirm(`Remove ${blog.title} by ${blog.author.name}`)) {
+      setBlogs(blogs.filter(Blog => Blog.id !== blog.id))
+    }
+  }
   const blogForm = () =>{
     return(
       <>
@@ -126,7 +132,7 @@ const App = () => {
         (SortedBlogs)?
           SortedBlogs.map(blog => {
             i += 1;
-            return <Blog key={blog.id} blog={blog} i={i} user={user} SortedBlogs={SortedBlogs} setSortedBlogs={setSortedBlogs} />
+            return <Blog blogs={blogs} setBlogs={setBlogs} key={blog.id} blog={blog} i={i} user={user} SortedBlogs={SortedBlogs} setSortedBlogs={setSortedBlogs} handleDelete={handleDelete} />
           }
         ):null
       }

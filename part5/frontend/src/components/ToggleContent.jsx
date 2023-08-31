@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import blogService from '../services/blogs'
 
 const ToggleContent = (props) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [author, setAuthor] = useState('')
-
+  
   if (props.type === 'form') {
     return (
       <div >
@@ -16,7 +16,6 @@ const ToggleContent = (props) => {
       </div>
     )
   } else if (props.type === 'blog') {
-
     const [like, setLike] = useState(props.blog.likes)
     const handleLike = () => {
       if (props.user){
@@ -41,7 +40,18 @@ const ToggleContent = (props) => {
 
     return (
       <div className='note' >
-        {props.i}{') '}title: <b>{props.blog.title}</b> &nbsp; 
+        {props.i}{') '}title: <b>{props.blog.title}</b>
+        
+        &nbsp; 
+       
+        <button onClick={() => setVisible(!visible)} className='visible' >
+          {visible ? 'hide' : props.label}
+        </button>
+
+        &nbsp; 
+
+        <button onClick={() => props.handleDelete(props.blog)} >Delete</button>
+
         {(visible) ?
           <>
             <br />
@@ -50,13 +60,10 @@ const ToggleContent = (props) => {
             <p style={{display:'inline',cursor:'pointer',userSelect:'none'}} onClick={handleLike}  >👍</p>: {like}
             <br />
             author: {author}
-            <br />
           </>
 
           : (<></>)}
-        <button onClick={() => setVisible(!visible)} className='visible' >
-          {visible ? 'hide' : props.label}
-        </button>
+        
       </div>
     )
   }
