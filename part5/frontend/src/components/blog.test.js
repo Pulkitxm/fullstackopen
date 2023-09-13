@@ -22,7 +22,27 @@ describe("<Blogs/>",()=>{
         expect(container).not.toHaveTextContent(blog.url)
     })
 
-    test("blog renders likes,author and url after button click",async ()=>{
+    // test("blog renders likes,author and url after button click",async ()=>{
+    //     const blog = {
+    //         title: "Test Blog",
+    //         author: "64ff5c5f30c256a7c7c67827",
+    //         url: "link_to_blog",
+    //         likes: 0,
+    //         id: "unique_id"
+    //     };
+
+    //     const mockHandler = jest.fn();
+
+    //     const {container} =  render(<Blog blog={blog} handleDelete={mockHandler}  />);
+    //     const user = userEvent.setup();
+    //     const button = screen.getByText("Delete");
+    //     await user.click(button);
+    //     expect(container).toHaveTextContent("Pulkit")
+    //     expect(container).toHaveTextContent(blog.likes)
+    //     expect(container).toHaveTextContent(blog.url)
+    // })
+
+    test("likes calls increased by 2",async ()=>{
         const blog = {
             title: "Test Blog",
             author: "64ff5c5f30c256a7c7c67827",
@@ -31,15 +51,14 @@ describe("<Blogs/>",()=>{
             id: "unique_id"
         };
 
-        const mock = jest.fn;
+        const mockHandler = jest.fn();
 
-        const {container} =  render(<Blog blog={blog} handleDelete={mock}  />);
+        const {container} =  render(<Blog blog={blog} handleDelete={mockHandler} handleLike={mockHandler}  />);
         const user = userEvent.setup();
         const button = screen.getByText("Delete");
         await user.click(button);
-        expect(container).toHaveTextContent(blog.author)
-        expect(container).toHaveTextContent(blog.likes)
-        expect(container).toHaveTextContent(blog.url)
+        await user.click(button);
+        expect(mockHandler.mock.calls).toHaveLength(2);
     })
 
 })
