@@ -9,7 +9,7 @@ blogsRouter.get('/',(req,res)=>{
 
 blogsRouter.get('/api/blogs', (request, response) => {
     // Blog.find({}).then(blogs=>{
-    Blog.find({}).populate('author',{name:1}).then(blogs => {
+    Blog.find({}).populate('author',{name:1}).then(blogs => { 
         response.json(blogs)
     })
 })

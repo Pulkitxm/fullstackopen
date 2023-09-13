@@ -129,15 +129,18 @@ const App = () => {
     <div>
       {user ? blogForm({ blogs }) : loginForm()}
       {
-        (SortedBlogs)?
+        (JSON.stringify(SortedBlogs)!=JSON.stringify([]))?
           SortedBlogs.map(blog => {
             i += 1;
             return <Blog blogs={blogs} setBlogs={setBlogs} key={blog.id} blog={blog} i={i} user={user} SortedBlogs={SortedBlogs} setSortedBlogs={setSortedBlogs} handleDelete={handleDelete} />
           }
-        ):null
+        ):
+        <h3>
+          Enter a Note to Start with the Application
+        </h3>
       }
     </div>
   )
 }
 
-export default App
+export default App;
