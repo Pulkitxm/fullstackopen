@@ -49,13 +49,35 @@ describe('blog app', () => {
         username: 'pulkit',
         password: 'pulkit',
       };
+      
       cy.request('POST', `${Cypress.env('backendUrl')}/api/users`, user).then((res) => {
         window.localStorage.setItem('loggedNoteappUser', JSON.stringify(res.body));
         cy.visit('');
       });
+
+      cy.request('POST', `${Cypress.env('backendUrl')}/api/login`, user).then((res) => {
+        const blog = {
+          title: 'Test Blog',
+          author: `${JSON.parse(window.localStorage.loggedNoteappUser).id}`,
+          url: 'https://devpulkit.vercel.app/',
+          likes:0
+        };
+
+        cy.request({
+          method: 'POST',
+          url: `${Cypress.env('backendUrl')}/api/blogs`,
+          body: blog,
+          headers: {
+            Authorization: `Bearer ${res.body.token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        cy.visit('');      
+      });
     });
 
-    it('passed', () => {
+    it('blog can be added', () => {
       cy.contains('Add a new Note').click();
       cy.get("input[name='Username']:eq(0)").type('Cypress');
       cy.get("input[name='Username']:eq(1)").type(JSON.parse(window.localStorage.loggedNoteappUser).id);
@@ -89,5 +111,13 @@ describe('blog app', () => {
         cy.contains('https://devpulkit.vercel.app/');
       });
     });
+
+    it("blog can be liked",()=>{
+      cy.contains("view").click()
+      cy.contains('0')
+      cy.contains('👍').click()
+      cy.contains('0').should('not.exist')
+    })
+    
   });
 });
