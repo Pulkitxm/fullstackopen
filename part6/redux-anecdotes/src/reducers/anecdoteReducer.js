@@ -26,14 +26,30 @@ export const voteAnecdote = (id) => {
   }
 }
 
+export const addAnectode = (content) => {
+  return {
+    type: 'addAnectode',
+    payload: {
+      content,
+      votes:0,
+      id:getId()
+    }
+  }
+}
+
 const initialState = anecdotesAtStart.map(asObject)
 
 const reducer = (state = initialState, action) => {
-  if (action.type == 'voteAnecdote'){
-    return state.map(i => ( i.id==action.payload.id ) ? {...i,votes:i.votes+1} : i)
-  }
 
-  return state
+  switch(action.type){
+    case 'voteAnecdote':
+      return state.map(i => ( i.id==action.payload.id ) ? {...i,votes:i.votes+1} : i)
+    case 'addAnectode':
+      const data = action.payload;
+      return state.concat({content:data.content,id:data.id,votes:data.votes})
+    default:
+      return state      
+  }
 }
 
 export default reducer
