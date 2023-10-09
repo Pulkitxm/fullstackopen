@@ -8,11 +8,18 @@ const DisplayAnecdote = () => {
       return state.anecdote.filter(i=>i.content.search(state.filter)!=-1)
     return state.anecdote
   });
-  
   const dispatch = useDispatch();
+
+  const displayNotification = (content) =>{
+    dispatch({ type: 'notification/changeNotification', payload: content})
+    setTimeout(()=>{
+      dispatch({ type: 'notification/removeNotification'})
+    },5000)
+  }
 
   const vote = (id) => {
     dispatch({ type: 'anecdote/voteAnecdote', payload: id })
+    displayNotification(`voted for [ ${anecdotes.filter(i=>i.id==id)[0].content} ]`)
   };
 
   const sortedAnecdotes = (anecdotes) => {

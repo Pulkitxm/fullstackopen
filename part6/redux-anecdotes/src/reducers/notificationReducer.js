@@ -5,10 +5,13 @@ const notificationReducer = createSlice({
     initialState:"Welcoe to Anecdotes Application",
     reducers:{
         changeNotification(state,action){
-            console.log("notification to be changed");
+            return action.payload
+        },
+        removeNotification(state,action){
+            return ""
         }
     }
 })
 
-export const {changeNotification} = notificationReducer.actions
+export const {changeNotification,removeNotification} = notificationReducer.actions
 export default notificationReducer.reducer
