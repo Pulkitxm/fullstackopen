@@ -6,7 +6,6 @@ const DisplayAnecdote = () => {
   const anecdotes = useSelector((state) => {
     if (state.filter!='')
       return state.anecdote.filter(i=>i.content.search(state.filter)!=-1)
-    console.log(state.anecdote);
     return state.anecdote
   });
   const dispatch = useDispatch();

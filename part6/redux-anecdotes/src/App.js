@@ -13,7 +13,6 @@ const App = () => {
 
   useEffect(()=>{
     anecdoteService.getAll().then((res)=>{
-      console.log(res)
       res.forEach(i => {
         dispatch({ type: 'anecdote/addAnectode', payload: i.content })
       });

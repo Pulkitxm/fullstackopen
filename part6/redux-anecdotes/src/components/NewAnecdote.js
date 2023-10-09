@@ -1,5 +1,6 @@
 import React from 'react'
 import {useDispatch } from "react-redux";
+import anecdoteServices from '../services/anecdote'
 
 const NewAnecdote = () => {
   const dispatch = useDispatch();
@@ -7,6 +8,7 @@ const NewAnecdote = () => {
   const newAnecdote = (event) => {
     event.preventDefault();
     dispatch({ type: 'anecdote/addAnectode', payload: event.target.content.value })
+    anecdoteServices.addAnecdote(event.target.content.value)
   }
   
   return (
