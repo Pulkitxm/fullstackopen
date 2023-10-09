@@ -1,6 +1,5 @@
 import React from 'react'
 import {useDispatch } from "react-redux";
-import {addAnectode} from '../reducers/anecdoteReducer'
 
 const NewAnecdote = () => {
   const dispatch = useDispatch();
