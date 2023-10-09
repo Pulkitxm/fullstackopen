@@ -7,7 +7,7 @@ const NewAnecdote = () => {
 
   const newAnecdote = (event) => {
     event.preventDefault();
-    dispatch(addAnectode(event.target.content.value))
+    dispatch({ type: 'anecdote/addAnectode', payload: event.target.content.value })
   }
   
   return (

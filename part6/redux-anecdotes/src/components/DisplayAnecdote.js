@@ -8,30 +8,30 @@ const DisplayAnecdote = () => {
       return state.anecdote.filter(i=>i.content.search(state.filter)!=-1)
     return state.anecdote
   });
+  
   const dispatch = useDispatch();
 
   const vote = (id) => {
-    dispatch(voteAnecdote(id));
+    dispatch({ type: 'anecdote/voteAnecdote', payload: id })
   };
 
-//   const sortedAnecdotes = () => {
-//     const sortedArr = [...anecdotes];
-//     for (let i=0;i<sortedArr.length;i++)
-//         for (let j=0;j<sortedArr.length-1;j++)
-//             if (sortedArr[j].votes < sortedArr[j+1].votes){
-//                 const newObj = sortedArr[j];;
-//                 sortedArr[j] = sortedArr[j+1];
-//                 sortedArr[j+1] = newObj;
-//             }
-//     console.log(sortedArr);
-//     return sortedArr;
-//   }
+  const sortedAnecdotes = (anecdotes) => {
+    const sortedArr = [...anecdotes];
+    for (let i=0;i<sortedArr.length;i++)
+        for (let j=0;j<sortedArr.length-1;j++)
+            if (sortedArr[j].votes < sortedArr[j+1].votes){
+                const newObj = sortedArr[j];;
+                sortedArr[j] = sortedArr[j+1];
+                sortedArr[j+1] = newObj;
+            }
+    return sortedArr;
+  }
 
   return (
     <div>
       <h2>Anecdotes</h2>
-      {/* {sortedAnecdotes().map((anecdote) => ( */}
-      {anecdotes.sort((a, b) => b.votes - a.votes).map((anecdote) => (
+      {/* {anecdotes.sort((a, b) => b.votes - a.votes).map((anecdote) => ( */}
+      {sortedAnecdotes(anecdotes).map((anecdote) => (
         <div key={anecdote.id}>
           <div>
             <div>{anecdote.content}</div>

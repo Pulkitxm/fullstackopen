@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useDispatch,useSelector } from 'react-redux'
-import {filterChange} from '../reducers/filterReducer'
 
 const VisibilityFilter = () => {
   const filter = useSelector(state=>state.filter)
@@ -9,7 +8,7 @@ const VisibilityFilter = () => {
   return (
     <div>
       filter: <input placeholder='Type a filter' onChange={(e)=>{
-        dispatch(filterChange(e.target.value))
+        dispatch({ type: 'filter/filterChange', payload: e.target.value})
       }} />
     </div>
   )
