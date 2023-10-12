@@ -1,6 +1,7 @@
 const Country = ({ country }) => {
+
   if (!country) {
-    return null;
+    return <></>
   }
 
   if (!country.found) {
@@ -9,13 +10,14 @@ const Country = ({ country }) => {
 
   return (
     <div>
-      <h3>{country.data.name} </h3>
-      <div>capital {country.data.capital} </div>
-      <div>population {country.data.population}</div>
+      <h3>{country.data.name.common} </h3>
+      <div><b>Capital</b>: {country.data.capital[0]} </div>
+      <div><b>Population</b>: {country.data.population}</div>
+      <br/>
       <img
-        src={country.data.flag}
+        src={country.data.flags.png}
         height="100"
-        alt={`flag of ${country.data.name}`}
+        alt={`flag of ${country.data.name.common}`}
       />
     </div>
   );

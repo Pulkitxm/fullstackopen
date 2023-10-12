@@ -12,7 +12,7 @@ const App = () => {
   const [name, setName] = useState('')
   const country = useCountry(name)
 
-  const fetch = (e) => {
+  const fetch = async (e) => {
     e.preventDefault()
     setName(nameInput.value)
   }
@@ -23,7 +23,6 @@ const App = () => {
         <input {...nameInput} />
         <button>find</button>
       </form>
-
       <Country country={country} />
     </div>
   )
