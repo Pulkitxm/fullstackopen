@@ -3,6 +3,7 @@ import {
   useMatch,Routes,Route
 } from 'react-router-dom'
 
+//Components
 import About from './components/About'
 import Anecdote from './components/Anecdote'
 import AnecdoteList from './components/AnecdoteList'
@@ -10,7 +11,15 @@ import CreateNew from './components/CreateNew'
 import Footer from './components/Footer'
 import Menu from './components/Menu'
 
+//Custom hooks
+import {useField} from './hooks/index'
+
 const App = () => {
+
+  const author = useField("text")
+  const content = useField("text")
+  const info = useField("text")
+  
   const [anecdotes, setAnecdotes] = useState([
     {
       content: 'If it hurts, do it more often',
@@ -27,17 +36,13 @@ const App = () => {
       id: 2
     }
   ])
-
   const [notification, setNotification] = useState('')
-
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000)
     setAnecdotes(anecdotes.concat(anecdote))
   }
-
   const anecdoteById = (id) =>
     anecdotes.find(a => a.id === id)
-
   const vote = (id) => {
     const anecdote = anecdoteById(id)
 
@@ -67,7 +72,15 @@ const App = () => {
       <Routes>
         <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
         <Route path='/anecdotes/:id' element={<Anecdote anecdote={anecdotes.filter(anecdote=>anecdote.id == id)[0]} />} />
-        <Route path='/createnew' element={<CreateNew addNew={addNew} setNotification={setNotification} />} />
+        <Route path='/createnew' element={
+          <CreateNew 
+            addNew={addNew} 
+            setNotification={setNotification} 
+            author={author}
+            content={content}
+            info={info}
+          />
+        } />
         <Route path='/about' element={<About/>} />
       </Routes>
       <Footer />
