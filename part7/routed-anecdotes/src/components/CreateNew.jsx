@@ -18,6 +18,13 @@ const CreateNew = (props) => {
       },5000)
       navigate('/')
     }
+
+    const handleClear = (e) => {
+      e.preventDefault()
+      props.content.clear()
+      props.author.clear()
+      props.info.clear()
+    }
   
     return (
       <div>
@@ -36,6 +43,7 @@ const CreateNew = (props) => {
             <input {...props.info}/>
           </div>
           <button>create</button>
+          <button onClick={handleClear} >clear</button>
         </form>
       </div>
     )

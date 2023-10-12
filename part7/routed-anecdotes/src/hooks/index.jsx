@@ -8,9 +8,14 @@ export const useField = (type) =>{
         e.target.value = ''
     }
     
+    const clear = () => {
+        setValue("")
+    }
+    
     return{
         type,
         value,
         onChange,
+        clear,
     }
 }
