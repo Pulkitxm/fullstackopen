@@ -1,0 +1,51 @@
+{
+  "notes": [
+    {
+      "content": "Meeting with the design team at 3 PM today",
+      "id": 1
+    },
+    {
+      "content": "Received positive feedback from the client on the project",
+      "id": 2
+    },
+    {
+      "content": "Prepare presentation for the upcoming conference",
+      "id": 3
+    },
+    {
+      "content": "Follow up with the marketing team about the campaign",
+      "id": 4
+    },
+    {
+      "content": "Review budget for Q4 2023",
+      "id": 5
+    }
+  ],
+  "persons": [
+    {
+      "name": "John Smith",
+      "number": "555-123-4567",
+      "id": 1
+    },
+    {
+      "name": "Emily Davis",
+      "number": "555-987-6543",
+      "id": 2
+    },
+    {
+      "name": "Michael Johnson",
+      "number": "555-456-7890",
+      "id": 3
+    },
+    {
+      "name": "Sarah Wilson",
+      "number": "555-789-1234",
+      "id": 4
+    },
+    {
+      "name": "David Brown",
+      "number": "555-234-5678",
+      "id": 5
+    }
+  ]
+}
