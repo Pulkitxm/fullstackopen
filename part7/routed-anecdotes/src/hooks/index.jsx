@@ -5,7 +5,6 @@ export const useField = (type) =>{
 
     const onChange = (e) => {
         setValue(e.target.value)
-        e.target.value = ''
     }
     
     const clear = () => {
