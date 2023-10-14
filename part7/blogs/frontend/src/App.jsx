@@ -6,36 +6,38 @@ import BlogForm from "./components/BlogForm";
 import ToggleContent from "./components/ToggleContent";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
-import Notification from './components/Notification';
+import Notification from "./components/Notification";
 
-import {useSelector,useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
+import { useReducer } from "react";
+
+const loginReducer = (state = null, action) => {
+  switch (action.type) {
+    case "setUser":
+      return action.payload;
+    default:
+      return action.payload;
+  }
+};
 
 const App = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   let i = 0;
-
-  const notification = useSelector(state=>state.notification)
-  const blogs = useSelector(state=>state.blogs)
-  
-  //const [blogs, setBlogs] = useState([]);
-  const [username, setUsername] = useState('pulkit')
-  const [password, setPassword] = useState('pulkit')
-  const [title, setTitle] = useState("Pulkit's New Blog")
-  const [author, setAuthor] = useState('652a43202d7bb78a572ca867')
-  const [url, setUrl] = useState('https://devpulkit.vercel.app/')
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [author, setAuthor] = useState("");
-  // const [url, setUrl] = useState("");
-  const [user, setUser] = useState(null);
+  const blogs = useSelector((state) => state.blogs);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [url, setUrl] = useState("");
   const [token, setToken] = useState("");
   const [SortedBlogs, setSortedBlogs] = useState([]);
+
+  const [user, userDispatch] = useReducer(loginReducer);
 
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       //setBlogs(blogs);
-      dispatch({type:"blogs/initializeBlogs",payload:blogs})
+      dispatch({ type: "blogs/initializeBlogs", payload: blogs });
       setSortedBlogs([]);
       setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
     });
@@ -47,12 +49,13 @@ const App = () => {
   // useEffect(() => {
   //   console.log("SortedBlogs", SortedBlogs);
   // }, [SortedBlogs])
-
+  // console.log(login);
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedNoteappUser");
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
-      setUser(user);
+      userDispatch({ type: "set", payload: user });
+      // setUser(user);
       setToken(`Bearer ${user.token}`);
     }
   }, []);
@@ -61,10 +64,13 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    dispatch({type:"notification/changeNotification",payload:`${username} logged in`})
-    setTimeout(()=>{
-      dispatch({type:"notification/changeNotification",payload:``})
-    },5000)
+    dispatch({
+      type: "notification/changeNotification",
+      payload: `${username} logged in`,
+    });
+    setTimeout(() => {
+      dispatch({ type: "notification/changeNotification", payload: `` });
+    }, 5000);
     try {
       const user = await loginService.login({
         username,
@@ -72,9 +78,10 @@ const App = () => {
       });
       window.localStorage.setItem("loggedNoteappUser", JSON.stringify(user));
       setToken(`Bearer ${user.token}`);
-      setUser(user);
+      // setUser(user);
+      userDispatch({ type: "set", payload: user });
       // console.log(user);
-      setUsername("");
+      // setUsername("");
       setPassword("");
     } catch (exception) {
       setErrorMessage(exception);
@@ -100,7 +107,7 @@ const App = () => {
       token: token,
     });
     // setBlogs(blogs.concat(bog));
-    dispatch({type:"blogs/createBlog",payload:bog})
+    dispatch({ type: "blogs/createBlog", payload: bog });
     setTitle("");
     setAuthor("");
     setUrl("");
@@ -109,7 +116,7 @@ const App = () => {
     blogService.Delete(blog.id);
     if (window.confirm(`Remove ${blog.title} by ${blog.author.name}`)) {
       // setBlogs(blogs.filter((Blog) => Blog.id !== blog.id));
-      dispatch({type:"blogs/deleteBlog",payload:blog.id})
+      dispatch({ type: "blogs/deleteBlog", payload: blog.id });
     }
   };
   const blogForm = () => {
@@ -142,16 +149,23 @@ const App = () => {
             handleLogin={handleLogin}
             username={username}
             setPassword={setPassword}
-            setUsername={setUsername}
+            // // setUsername={setUsername}
             password={password}
           />
         </ToggleContent>
       </>
     );
-  }
+  };
   return (
     <div>
-      <Notification/>
+      <div>
+        <button
+          onClick={() => userDispatch({ type: "set", payload: "Pulkit" })}
+        >
+          set
+        </button>
+      </div>
+      <Notification />
       {user ? blogForm({ blogs }) : loginForm()}
       {JSON.stringify(SortedBlogs) != JSON.stringify([]) ? (
         SortedBlogs.map((blog) => {
