@@ -1,23 +1,28 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
+import notificationReducer from "./reducers/notificationReducer";
+import blogReducer from "./reducers/blogReducer";
+import usersReducer from "./reducers/usersReducer";
 
-import notificationReducer from './reducers/notificationReducer'
-import blogReducer from './reducers/blogReducer'
-
+import {
+	BrowserRouter as Router
+  } from "react-router-dom";
 
 const store = configureStore({
-	reducer:{
-		notification:notificationReducer,
-		blogs:blogReducer
-	}
-})
+  reducer: {
+    notification: notificationReducer,
+    blogs: blogReducer,
+    users: usersReducer,
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	
-	<Provider store={store} >
-		<App />
-	</Provider>
-)
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>
+);

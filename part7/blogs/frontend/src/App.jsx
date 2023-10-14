@@ -1,5 +1,9 @@
+import { useState, useEffect, useReducer } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
+
 import "./App.css";
-import { useState, useEffect } from "react";
+
 import Blog from "./components/Blog";
 import LoginForm from "./components/LoginForm";
 import BlogForm from "./components/BlogForm";
@@ -7,9 +11,7 @@ import ToggleContent from "./components/ToggleContent";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 import Notification from "./components/Notification";
-
-import { useSelector, useDispatch } from "react-redux";
-import { useReducer } from "react";
+import { getUsers } from "./services/users";
 
 const loginReducer = (state = null, action) => {
   switch (action.type) {
@@ -24,16 +26,21 @@ const App = () => {
   const dispatch = useDispatch();
   let i = 0;
   const blogs = useSelector((state) => state.blogs);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [url, setUrl] = useState("");
+  const [username, setUsername] = useState("pulkit");
+  const [password, setPassword] = useState("pulkit");
+  const [title, setTitle] = useState("Pulkit's New Blog");
+  const [author, setAuthor] = useState("652a43202d7bb78a572ca867");
+  const [url, setUrl] = useState("https://devpulkit.vercel.app/");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [url, setUrl] = useState("");
   const [token, setToken] = useState("");
   const [SortedBlogs, setSortedBlogs] = useState([]);
-
+  const navigate = useNavigate();
   const [user, userDispatch] = useReducer(loginReducer);
-
+  const users = useSelector(state=>state.users)
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       //setBlogs(blogs);
@@ -41,16 +48,6 @@ const App = () => {
       setSortedBlogs([]);
       setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
     });
-  }, []);
-  useEffect(() => {
-    setSortedBlogs([]);
-    setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
-  }, [blogs]);
-  // useEffect(() => {
-  //   console.log("SortedBlogs", SortedBlogs);
-  // }, [SortedBlogs])
-  // console.log(login);
-  useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedNoteappUser");
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
@@ -59,6 +56,16 @@ const App = () => {
       setToken(`Bearer ${user.token}`);
     }
   }, []);
+  useEffect(() => {
+    (async () => {
+      await getUsers().then((i) => {
+        // setusers(i)
+        dispatch({type:"users/initialize",payload:i})
+      });
+    })();
+    setSortedBlogs([]);
+    setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
+  }, [blogs]);
 
   const setErrorMessage = (error) => console.log(error);
 
@@ -91,6 +98,7 @@ const App = () => {
     if (window.localStorage.length) {
       window.localStorage.removeItem("loggedNoteappUser");
     }
+    // navigate("/");
     window.location.reload();
   };
   const handleBogSubmit = async (e) => {
@@ -129,7 +137,7 @@ const App = () => {
   const blogForm = () => {
     return (
       <>
-        <h1>blogs</h1>
+        <h1>Blogs</h1>
         <p>
           {user.name} logged in <button onClick={logout}>logout</button>
         </p>
@@ -163,37 +171,75 @@ const App = () => {
       </>
     );
   };
+  const DisplayBlogs = () => {
+    return (
+      <>
+        {user ? blogForm({ blogs }) : <></>}
+        {JSON.stringify(SortedBlogs) != JSON.stringify([]) ? (
+          SortedBlogs.map((blog) => {
+            i += 1;
+            return (
+              <Blog
+                blogs={blogs}
+                // setBlogs={setBlogs}
+                key={blog.id}
+                blog={blog}
+                i={i}
+                user={user}
+                SortedBlogs={SortedBlogs}
+                setSortedBlogs={setSortedBlogs}
+                handleDelete={handleDelete}
+              />
+            );
+          })
+        ) : (
+          <h3>Enter a Note to Start with the Application</h3>
+        )}
+      </>
+    );
+  };
+  const DisplayUsers = () => {
+    return (
+      <>
+        <h1>Users</h1>
+        {user ? (
+          <>
+            {user.name} logged in <button onClick={logout}>logout</button>
+          </>
+        ) : (
+          <></>
+        )}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>blogs created</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.blogs.length}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
+  };
   return (
     <div>
-      <div>
-        <button
-          onClick={() => userDispatch({ type: "set", payload: "Pulkit" })}
-        >
-          set
-        </button>
-      </div>
       <Notification />
-      {user ? blogForm({ blogs }) : loginForm()}
-      {JSON.stringify(SortedBlogs) != JSON.stringify([]) ? (
-        SortedBlogs.map((blog) => {
-          i += 1;
-          return (
-            <Blog
-              blogs={blogs}
-              // setBlogs={setBlogs}
-              key={blog.id}
-              blog={blog}
-              i={i}
-              user={user}
-              SortedBlogs={SortedBlogs}
-              setSortedBlogs={setSortedBlogs}
-              handleDelete={handleDelete}
-            />
-          );
-        })
-      ) : (
-        <h3>Enter a Note to Start with the Application</h3>
-      )}
+      <Link to="/">home</Link>
+      <br />
+      <Link to="/users">views</Link>
+      <br />
+      {user ? <></> : loginForm()}
+      <Routes>
+        <Route path="/" element={<DisplayBlogs />} />
+        <Route path="/users" element={<DisplayUsers />} />
+      </Routes>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import ToggleContent from "./ToggleContent";
-import usersService from "../services/users";
+import {getUser} from "../services/users";
 
 import { useDispatch } from "react-redux";
 
@@ -8,7 +8,7 @@ const getAuthor = async (blog, blogs) => {
   if (blog.author.id) {
     return blog.author.name;
   } else {
-    const author = await usersService.getUser(blog.author).then((author) => {
+    const author = await getUser(blog.author).then((author) => {
       const updatedBlogs = blogs.map((b) =>
           b.id !== blog.id
             ? b
