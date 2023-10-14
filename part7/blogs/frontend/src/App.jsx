@@ -6,8 +6,12 @@ import BlogForm from "./components/BlogForm";
 import ToggleContent from "./components/ToggleContent";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
+import Notification from './components/Notification';
+
+import {useSelector,useDispatch} from 'react-redux';
 
 const App = () => {
+  const dispatch = useDispatch()
   let i = 0;
   const [blogs, setBlogs] = useState([]);
   // const [username, setUsername] = useState('pulkit')
@@ -52,7 +56,10 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
+    dispatch({type:"notification/changeNotification",payload:`${username} logged in`})
+    setTimeout(()=>{
+      dispatch({type:"notification/changeNotification",payload:``})
+    },5000)
     try {
       const user = await loginService.login({
         username,
@@ -135,8 +142,11 @@ const App = () => {
       </>
     );
   };
+  const notification = useSelector(state=>state.notification)
+	console.log(notification);
   return (
     <div>
+      <Notification/>
       {user ? blogForm({ blogs }) : loginForm()}
       {JSON.stringify(SortedBlogs) != JSON.stringify([]) ? (
         SortedBlogs.map((blog) => {

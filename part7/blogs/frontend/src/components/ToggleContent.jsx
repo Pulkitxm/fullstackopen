@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import blogService from "../services/blogs";
+import {useDispatch} from 'react-redux'
 
 const ToggleContent = (props) => {
+  const dispatch = useDispatch()
   const [visible, setVisible] = useState(false);
   const [author, setAuthor] = useState("");
 
@@ -12,7 +14,13 @@ const ToggleContent = (props) => {
         <br />
         <br />
         <button
-          onClick={() => setVisible(!visible)}
+          onClick={() => {
+            setVisible(!visible)
+            dispatch({type:"notification/changeNotification",payload:`add blog is toggled`})
+            setTimeout(()=>{
+              dispatch({type:"notification/changeNotification",payload:``})
+            },5000)
+          }}
           style={{ backgroundColor: "red" }}
         >
           {visible ? "Cancel" : props.label}
@@ -22,6 +30,10 @@ const ToggleContent = (props) => {
   } else if (props.type === "blog") {
     const [like, setLike] = useState(props.blog.likes);
     const handleLike = () => {
+      dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is liked`})
+      setTimeout(()=>{
+        dispatch({type:"notification/changeNotification",payload:``})
+      },5000)
       if (props.user) {
         setLike(like + 1);
         props.blog.likes += 1;
@@ -50,11 +62,23 @@ const ToggleContent = (props) => {
         {props.i}
         {") "}title: <b>{props.blog.title}</b>
         &nbsp;
-        <button onClick={() => setVisible(!visible)} className="visible">
+        <button onClick={() => {
+          setVisible(!visible)
+          dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is toggled`})
+            setTimeout(()=>{
+              dispatch({type:"notification/changeNotification",payload:``})
+            },5000)
+        }} className="visible">
           {visible ? "hide" : props.label}
         </button>
         &nbsp;
-        <button onClick={() => props.handleDelete(props.blog)}>Delete</button>
+        <button onClick={() => {
+          props.handleDelete(props.blog)
+          dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is deleted`})
+            setTimeout(()=>{
+              dispatch({type:"notification/changeNotification",payload:``})
+            },5000)
+        }}>Delete</button>
         {visible ? (
           <>
             <br />
