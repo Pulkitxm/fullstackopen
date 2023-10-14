@@ -111,6 +111,13 @@ const App = () => {
     setTitle("");
     setAuthor("");
     setUrl("");
+    dispatch({
+      type: "notification/changeNotification",
+      payload: `New blog: '${bog.title}' added`,
+    });
+    setTimeout(() => {
+      dispatch({ type: "notification/changeNotification", payload: `` });
+    }, 5000);
   };
   const handleDelete = (blog) => {
     blogService.Delete(blog.id);
