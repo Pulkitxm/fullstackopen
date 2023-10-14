@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import blogService from "../services/blogs";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 
 const ToggleContent = (props) => {
-  const dispatch = useDispatch()
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(true);
   const [author, setAuthor] = useState("");
 
   if (props.type === "form") {
@@ -15,11 +15,17 @@ const ToggleContent = (props) => {
         <br />
         <button
           onClick={() => {
-            setVisible(!visible)
-            dispatch({type:"notification/changeNotification",payload:`add blog is toggled`})
-            setTimeout(()=>{
-              dispatch({type:"notification/changeNotification",payload:``})
-            },5000)
+            setVisible(!visible);
+            dispatch({
+              type: "notification/changeNotification",
+              payload: `add blog is toggled`,
+            });
+            setTimeout(() => {
+              dispatch({
+                type: "notification/changeNotification",
+                payload: ``,
+              });
+            }, 5000);
           }}
           style={{ backgroundColor: "red" }}
         >
@@ -30,14 +36,21 @@ const ToggleContent = (props) => {
   } else if (props.type === "blog") {
     const [like, setLike] = useState(props.blog.likes);
     const handleLike = () => {
-      const b = props.blog
-      dispatch({type:"blogs/addLike",payload:b.id})
-      setLike(like+1)
-      blogService.update(b.id, {...b,author:b.author.id,likes:b.likes+1});
-      dispatch({type:"notification/changeNotification",payload:`blog: '${b.title}' is liked`})
-      setTimeout(()=>{
-        dispatch({type:"notification/changeNotification",payload:``})
-      },5000)
+      const b = props.blog;
+      dispatch({ type: "blogs/addLike", payload: b.id });
+      setLike(like + 1);
+      blogService.update(b.id, {
+        ...b,
+        author: b.author.id,
+        likes: b.likes + 1,
+      });
+      dispatch({
+        type: "notification/changeNotification",
+        payload: `blog: '${b.title}' is liked`,
+      });
+      setTimeout(() => {
+        dispatch({ type: "notification/changeNotification", payload: `` });
+      }, 5000);
       // if (props.user) {
       //   setLike(like + 1);
       //   props.blog.likes += 1;
@@ -66,23 +79,42 @@ const ToggleContent = (props) => {
         {props.i}
         {") "}title: <b>{props.blog.title}</b>
         &nbsp;
-        <button onClick={() => {
-          setVisible(!visible)
-          dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is toggled`})
-            setTimeout(()=>{
-              dispatch({type:"notification/changeNotification",payload:``})
-            },5000)
-        }} className="visible">
+        <button
+          onClick={() => {
+            setVisible(!visible);
+            dispatch({
+              type: "notification/changeNotification",
+              payload: `blog: '${props.blog.title}' is toggled`,
+            });
+            setTimeout(() => {
+              dispatch({
+                type: "notification/changeNotification",
+                payload: ``,
+              });
+            }, 5000);
+          }}
+          className="visible"
+        >
           {visible ? "hide" : props.label}
         </button>
         &nbsp;
-        <button onClick={() => {
-          props.handleDelete(props.blog)
-          dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is deleted`})
-            setTimeout(()=>{
-              dispatch({type:"notification/changeNotification",payload:``})
-            },5000)
-        }}>Delete</button>
+        <button
+          onClick={() => {
+            props.handleDelete(props.blog);
+            dispatch({
+              type: "notification/changeNotification",
+              payload: `blog: '${props.blog.title}' is deleted`,
+            });
+            setTimeout(() => {
+              dispatch({
+                type: "notification/changeNotification",
+                payload: ``,
+              });
+            }, 5000);
+          }}
+        >
+          Delete
+        </button>
         {visible ? (
           <>
             <br />

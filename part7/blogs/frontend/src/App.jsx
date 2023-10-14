@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 
 import "./App.css";
 
@@ -40,7 +40,7 @@ const App = () => {
   const [SortedBlogs, setSortedBlogs] = useState([]);
   const navigate = useNavigate();
   const [user, userDispatch] = useReducer(loginReducer);
-  const users = useSelector(state=>state.users)
+  const users = useSelector((state) => state.users);
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       //setBlogs(blogs);
@@ -55,12 +55,18 @@ const App = () => {
       // setUser(user);
       setToken(`Bearer ${user.token}`);
     }
+    (async () => {
+      await getUsers().then((i) => {
+        // setusers(i)
+        dispatch({ type: "users/initialize", payload: i });
+      });
+    })();
   }, []);
   useEffect(() => {
     (async () => {
       await getUsers().then((i) => {
         // setusers(i)
-        dispatch({type:"users/initialize",payload:i})
+        dispatch({ type: "users/initialize", payload: i });
       });
     })();
     setSortedBlogs([]);
@@ -219,12 +225,56 @@ const App = () => {
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td>{user.name}</td>
+                <td>
+                  <Link to={`/users/${user.id}`}>{user.name}</Link>
+                </td>
                 <td>{user.blogs.length}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      </>
+    );
+  };
+  const DisplayUser = () => {
+    const { id } = useParams();
+    const [User, setUser] = useState(null);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const userData = await getUsers(); // Assuming getUsers is an async function
+          setUser(userData.find((u) => u.id === id));
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      fetchData();
+    }, []);
+    console.log(User);
+    return (
+      <>
+        <h1>Users</h1>
+        {user ? (
+          <>
+            {user.name} logged in <button onClick={logout}>logout</button>
+          </>
+        ) : (
+          <></>
+        )}
+        {User ? (
+          <>
+            <h2>{User.name}</h2>
+            <h3>added blogs</h3>
+            <ul>
+            {User.blogs.map((blog) => {
+              return <li key={blog.id}>{blog.title}</li>;
+            })}
+            </ul>
+          </>
+        ) : (
+          <></>
+        )}
       </>
     );
   };
@@ -239,6 +289,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<DisplayBlogs />} />
         <Route path="/users" element={<DisplayUsers />} />
+        <Route path="/users/:id" element={<DisplayUser />} />
       </Routes>
     </div>
   );
