@@ -30,25 +30,29 @@ const ToggleContent = (props) => {
   } else if (props.type === "blog") {
     const [like, setLike] = useState(props.blog.likes);
     const handleLike = () => {
-      dispatch({type:"notification/changeNotification",payload:`blog: '${props.blog.title}' is liked`})
+      const b = props.blog
+      dispatch({type:"blogs/addLike",payload:b.id})
+      setLike(like+1)
+      blogService.update(b.id, {...b,author:b.author.id,likes:b.likes+1});
+      dispatch({type:"notification/changeNotification",payload:`blog: '${b.title}' is liked`})
       setTimeout(()=>{
         dispatch({type:"notification/changeNotification",payload:``})
       },5000)
-      if (props.user) {
-        setLike(like + 1);
-        props.blog.likes += 1;
-        let id = props.blog.id;
-        let newObject1 = { ...props.blog, author: author.id, likes: like + 1 };
-        let newObject2 = { ...props.blog, likes: like + 1 };
-        blogService.update(id, newObject1);
-        let UpdatedBogs = [
-          ...props.SortedBlogs.filter((blog) => blog.id !== id),
-          newObject2,
-        ];
-        UpdatedBogs = [...UpdatedBogs].sort((a, b) => b.likes - a.likes);
-        props.setSortedBlogs([]);
-        props.setSortedBlogs(UpdatedBogs);
-      }
+      // if (props.user) {
+      //   setLike(like + 1);
+      //   props.blog.likes += 1;
+      //   let id = props.blog.id;
+      //   let newObject1 = { ...props.blog, author: author.id, likes: like + 1 };
+      //   let newObject2 = { ...props.blog, likes: like + 1 };
+      //   blogService.update(id, newObject1);
+      //   let UpdatedBogs = [
+      //     ...props.SortedBlogs.filter((blog) => blog.id !== id),
+      //     newObject2,
+      //   ];
+      //   UpdatedBogs = [...UpdatedBogs].sort((a, b) => b.likes - a.likes);
+      //   props.setSortedBlogs([]);
+      //   props.setSortedBlogs(UpdatedBogs);
+      // }
     };
 
     useEffect(() => {

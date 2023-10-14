@@ -109,7 +109,7 @@ const App = () => {
     blogService.Delete(blog.id);
     if (window.confirm(`Remove ${blog.title} by ${blog.author.name}`)) {
       // setBlogs(blogs.filter((Blog) => Blog.id !== blog.id));
-      console.log("perform delete here");
+      dispatch({type:"blogs/deleteBlog",payload:blog.id})
     }
   };
   const blogForm = () => {
