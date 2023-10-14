@@ -13,24 +13,29 @@ import {useSelector,useDispatch} from 'react-redux';
 const App = () => {
   const dispatch = useDispatch()
   let i = 0;
-  const [blogs, setBlogs] = useState([]);
-  // const [username, setUsername] = useState('pulkit')
-  // const [password, setPassword] = useState('pulkit123')
-  // const [title, setTitle] = useState("Pulkit's New Blog")
-  // const [author, setAuthor] = useState('64dcf3025d49b139b608301e')
-  // const [url, setUrl] = useState('https://devpulkit.vercel.app/')
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [url, setUrl] = useState("");
+
+  const notification = useSelector(state=>state.notification)
+  const blogs = useSelector(state=>state.blogs)
+  
+  //const [blogs, setBlogs] = useState([]);
+  const [username, setUsername] = useState('pulkit')
+  const [password, setPassword] = useState('pulkit')
+  const [title, setTitle] = useState("Pulkit's New Blog")
+  const [author, setAuthor] = useState('652a43202d7bb78a572ca867')
+  const [url, setUrl] = useState('https://devpulkit.vercel.app/')
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [url, setUrl] = useState("");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState("");
   const [SortedBlogs, setSortedBlogs] = useState([]);
 
   useEffect(() => {
     blogService.getAll().then((blogs) => {
-      setBlogs(blogs);
+      //setBlogs(blogs);
+      dispatch({type:"blogs/initializeBlogs",payload:blogs})
       setSortedBlogs([]);
       setSortedBlogs([...blogs].sort((a, b) => b.likes - a.likes));
     });
@@ -94,7 +99,8 @@ const App = () => {
       newObject: newObject,
       token: token,
     });
-    setBlogs(blogs.concat(bog));
+    // setBlogs(blogs.concat(bog));
+    dispatch({type:"blogs/createBlog",payload:bog})
     setTitle("");
     setAuthor("");
     setUrl("");
@@ -102,7 +108,8 @@ const App = () => {
   const handleDelete = (blog) => {
     blogService.Delete(blog.id);
     if (window.confirm(`Remove ${blog.title} by ${blog.author.name}`)) {
-      setBlogs(blogs.filter((Blog) => Blog.id !== blog.id));
+      // setBlogs(blogs.filter((Blog) => Blog.id !== blog.id));
+      console.log("perform delete here");
     }
   };
   const blogForm = () => {
@@ -141,9 +148,7 @@ const App = () => {
         </ToggleContent>
       </>
     );
-  };
-  const notification = useSelector(state=>state.notification)
-	console.log(notification);
+  }
   return (
     <div>
       <Notification/>
@@ -154,7 +159,7 @@ const App = () => {
           return (
             <Blog
               blogs={blogs}
-              setBlogs={setBlogs}
+              // setBlogs={setBlogs}
               key={blog.id}
               blog={blog}
               i={i}

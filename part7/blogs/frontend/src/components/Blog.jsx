@@ -1,18 +1,20 @@
 import ToggleContent from "./ToggleContent";
 import usersService from "../services/users";
 
-const getAuthor = async (blog, blogs, setBlogs) => {
+import { useDispatch } from "react-redux";
+
+const getAuthor = async (blog, blogs) => {
+  const dispatch = useDispatch() 
   if (blog.author.id) {
     return blog.author.name;
   } else {
     const author = await usersService.getUser(blog.author).then((author) => {
-      setBlogs(
-        blogs.map((b) =>
+      const updatedBlogs = blogs.map((b) =>
           b.id !== blog.id
             ? b
             : { ...b, author: { name: author.name, id: author.id } },
-        ),
-      );
+        )
+      dispatch({type:"blogs/initializeBlogs",pyload:updatedBlogs})
       return author;
     });
     return author.name;
@@ -20,7 +22,6 @@ const getAuthor = async (blog, blogs, setBlogs) => {
 };
 
 const Blog = ({
-  setBlogs,
   blog,
   blogs,
   i,
@@ -35,7 +36,7 @@ const Blog = ({
       type="blog"
       blog={blog}
       i={i}
-      author={getAuthor(blog, blogs, setBlogs)}
+      author={getAuthor(blog, blogs)}
       user={user}
       SortedBlogs={SortedBlogs}
       setSortedBlogs={setSortedBlogs}
