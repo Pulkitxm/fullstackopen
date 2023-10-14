@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import blogService from "../services/blogs";
 import { useDispatch } from "react-redux";
+import {Link} from 'react-router-dom'
+import img from "../assets/open in new tab.png"
 
 const ToggleContent = (props) => {
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(props.visible?true:false);
   const [author, setAuthor] = useState("");
-
+  // if() setVisible(props.visible)
   if (props.type === "form") {
     return (
       <div>
@@ -73,11 +75,15 @@ const ToggleContent = (props) => {
         setAuthor(Author);
       });
     }, [props.author, props.type]);
-
     return (
       <div className="note">
-        {props.i}
-        {") "}title: <b>{props.blog.title}</b>
+        {
+          props.i?
+          <>{props.i} {") "}</>
+          :
+          <></>
+        }
+        title: <b>{props.blog.title}</b>
         &nbsp;
         <button
           onClick={() => {
@@ -115,6 +121,9 @@ const ToggleContent = (props) => {
         >
           Delete
         </button>
+        <Link to={`/blogs/${props.blog.id}`}>
+          <img src={img} style={{width:'1em',marginLeft:'1em'}} alt="" />
+        </Link>
         {visible ? (
           <>
             <br />

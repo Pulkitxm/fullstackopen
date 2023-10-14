@@ -5,6 +5,7 @@ import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import "./App.css";
 
 import Blog from "./components/Blog";
+import DisplayBlog from "./components/DisplayBlog";
 import LoginForm from "./components/LoginForm";
 import BlogForm from "./components/BlogForm";
 import ToggleContent from "./components/ToggleContent";
@@ -267,9 +268,9 @@ const App = () => {
             <h2>{User.name}</h2>
             <h3>added blogs</h3>
             <ul>
-            {User.blogs.map((blog) => {
-              return <li key={blog.id}>{blog.title}</li>;
-            })}
+              {User.blogs.map((blog) => {
+                return <li key={blog.id}>{blog.title}</li>;
+              })}
             </ul>
           </>
         ) : (
@@ -290,6 +291,19 @@ const App = () => {
         <Route path="/" element={<DisplayBlogs />} />
         <Route path="/users" element={<DisplayUsers />} />
         <Route path="/users/:id" element={<DisplayUser />} />
+        <Route
+          path="/blogs/:id"
+          element={
+            <DisplayBlog
+              blogs={blogs}
+              user={user}
+              SortedBlogs={SortedBlogs}
+              setSortedBlogs={setSortedBlogs}
+              handleDelete={handleDelete}
+              i={i}
+            />
+          }
+        />
       </Routes>
     </div>
   );
