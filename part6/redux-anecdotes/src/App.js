@@ -7,16 +7,14 @@ import { useEffect } from 'react'
 import anecdoteService from './services/anecdote'
 import { useDispatch } from 'react-redux'
 
+import {initialAnecdotes} from './reducers/anecdoteReducer'
+
 const App = () => { 
 
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    anecdoteService.getAll().then((res)=>{
-      res.forEach(i => {
-        dispatch({ type: 'anecdote/addAnectode', payload: i.content })
-      });
-    })
+    dispatch(initialAnecdotes())
   },[])
    
   return (
