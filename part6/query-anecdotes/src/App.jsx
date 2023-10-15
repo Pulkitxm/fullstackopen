@@ -3,8 +3,21 @@ import {fetchAll} from './services/request'
 import {addVote} from './services/request'
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
+import { useReducer } from 'react'
+
+const notificationReducer = (state,action) => {
+  switch (action.type) {
+    case "change":
+        return action.payload
+    case "clear":
+        return ''
+    default:
+        return state
+  }
+}
 
 const App = () => {
+  const [notification,notificationDispatch] = useReducer(notificationReducer,'')
   const queryClient = useQueryClient()
   const addVoteMutation = useMutation(addVote, {
     onSuccess: function () {
@@ -32,14 +45,14 @@ const App = () => {
   
   const handleVote = (anecdote) => {
     addVoteMutation.mutate({...anecdote,votes:anecdote.votes+1})
+    notificationDispatch({ type: "change",payload:`voted for ${anecdote.content}`})
   }
 
   return (
     <div>
       <h3>Anecdote app</h3>
-    
-      <Notification />
-      <AnecdoteForm />
+      <Notification message={notification}/>
+      <AnecdoteForm notificationDispatch={notificationDispatch}  />
     
       {anecdotes.map(anecdote =>
         <div key={anecdote.id}>

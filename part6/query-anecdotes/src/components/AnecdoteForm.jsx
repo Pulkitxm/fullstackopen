@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAnecdote } from '../services/request';
 
-const AnecdoteForm = () => {
+const AnecdoteForm = ({notificationDispatch}) => {
   const queryClient = useQueryClient();
 
   const newAnecdoteMutation = useMutation(createAnecdote, {
@@ -17,6 +17,7 @@ const AnecdoteForm = () => {
     console.log('new anecdote')
     if (content.length <5) return alert("too short anecdote")
     newAnecdoteMutation.mutate({ content, votes:0 })
+    notificationDispatch({ type: "change",payload:`new Anecdote added ${content}`})
 }
 
   return (
