@@ -29,6 +29,7 @@ const Blog = ({
   SortedBlogs,
   setSortedBlogs,
   handleDelete,
+  setOpen
 }) => {
   return (
     <ToggleContent
@@ -41,6 +42,7 @@ const Blog = ({
       SortedBlogs={SortedBlogs}
       setSortedBlogs={setSortedBlogs}
       handleDelete={handleDelete}
+      setOpen={setOpen}
     />
   );
 };

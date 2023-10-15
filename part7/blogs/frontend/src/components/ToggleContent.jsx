@@ -9,7 +9,6 @@ const ToggleContent = (props) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(props.visible ? true : false);
   const [author, setAuthor] = useState("");
-  // if() setVisible(props.visible)
   if (props.type === "form") {
     return (
       <div>
@@ -18,17 +17,7 @@ const ToggleContent = (props) => {
         <br />
         <button
           onClick={() => {
-            setVisible(!visible);
-            dispatch({
-              type: "notification/changeNotification",
-              payload: `add blog is toggled`,
-            });
-            setTimeout(() => {
-              dispatch({
-                type: "notification/changeNotification",
-                payload: ``,
-              });
-            }, 5000);
+            setVisible(!visible)
           }}
           style={{ backgroundColor: "red" }}
         >
@@ -51,9 +40,7 @@ const ToggleContent = (props) => {
         type: "notification/changeNotification",
         payload: `blog: '${b.title}' is liked`,
       });
-      setTimeout(() => {
-        dispatch({ type: "notification/changeNotification", payload: `` });
-      }, 5000);
+      setOpen(true)
       // if (props.user) {
       //   setLike(like + 1);
       //   props.blog.likes += 1;
@@ -107,12 +94,7 @@ const ToggleContent = (props) => {
               type: "notification/changeNotification",
               payload: `blog: '${props.blog.title}' is deleted`,
             });
-            setTimeout(() => {
-              dispatch({
-                type: "notification/changeNotification",
-                payload: ``,
-              });
-            }, 5000);
+            props.setOpen(true)
           }}
         >
           Delete

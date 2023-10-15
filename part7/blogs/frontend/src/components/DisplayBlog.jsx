@@ -13,6 +13,7 @@ const DisplayBlog = ({
   setSortedBlogs,
   handleDelete,
   i,
+  setOpen
 }) => {
   const id = useParams().id;
   const [comments, setcomments] = useState([])
@@ -55,6 +56,7 @@ const DisplayBlog = ({
         setSortedBlogs={setSortedBlogs}
         handleDelete={handleDelete}
         visible={true}
+        setOpen={setOpen}
       />
       <h2>Comments</h2>
       <div>
@@ -62,6 +64,7 @@ const DisplayBlog = ({
         <button onClick={async()=>{
           blogServices.addComments(id,newComment)
           setcomments(comments.concat(newComment))
+          setnewComment('')
         }} >add comment</button>
       </div>
       <ul>

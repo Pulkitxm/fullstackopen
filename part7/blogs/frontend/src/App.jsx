@@ -1,9 +1,10 @@
-import { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 
 import "./App.css";
 
+import Navbar from "./components/Navbar";
 import Blog from "./components/Blog";
 import DisplayBlog from "./components/DisplayBlog";
 import LoginForm from "./components/LoginForm";
@@ -14,6 +15,11 @@ import loginService from "./services/login";
 import Notification from "./components/Notification";
 import { getUsers } from "./services/users";
 
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
 const loginReducer = (state = null, action) => {
   switch (action.type) {
     case "setUser":
@@ -23,9 +29,16 @@ const loginReducer = (state = null, action) => {
   }
 };
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+import { Container } from "@mui/material";
+
 const App = () => {
   const dispatch = useDispatch();
   let i = 0;
+  const [open, setOpen] = useState(false);
   const blogs = useSelector((state) => state.blogs);
   const [username, setUsername] = useState("pulkit");
   const [password, setPassword] = useState("pulkit");
@@ -42,6 +55,7 @@ const App = () => {
   const navigate = useNavigate();
   const [user, userDispatch] = useReducer(loginReducer);
   const users = useSelector((state) => state.users);
+  const notification = useSelector((state) => state.notification);
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       //setBlogs(blogs);
@@ -78,13 +92,6 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    dispatch({
-      type: "notification/changeNotification",
-      payload: `${username} logged in`,
-    });
-    setTimeout(() => {
-      dispatch({ type: "notification/changeNotification", payload: `` });
-    }, 5000);
     try {
       const user = await loginService.login({
         username,
@@ -97,6 +104,11 @@ const App = () => {
       // console.log(user);
       // setUsername("");
       setPassword("");
+      dispatch({
+        type: "notification/changeNotification",
+        payload: `${username} logged in`,
+      });
+      setOpen(true)
     } catch (exception) {
       setErrorMessage(exception);
     }
@@ -130,9 +142,7 @@ const App = () => {
       type: "notification/changeNotification",
       payload: `New blog: '${bog.title}' added`,
     });
-    setTimeout(() => {
-      dispatch({ type: "notification/changeNotification", payload: `` });
-    }, 5000);
+    setOpen(true)
   };
   const handleDelete = (blog) => {
     blogService.Delete(blog.id);
@@ -148,7 +158,7 @@ const App = () => {
         <p>
           {user.name} logged in <button onClick={logout}>logout</button>
         </p>
-        <ToggleContent label="Add a new Note" type="form">
+        <ToggleContent label="Add a new Note" type="form" setOpen={setOpen}>
           <BlogForm
             handleBogSubmit={handleBogSubmit}
             title={title}
@@ -157,6 +167,7 @@ const App = () => {
             setAuthor={setAuthor}
             url={url}
             setUrl={setUrl}
+            setOpen={setOpen}
           />
         </ToggleContent>
       </>
@@ -173,6 +184,7 @@ const App = () => {
             setPassword={setPassword}
             // // setUsername={setUsername}
             password={password}
+            setOpen={setOpen}
           />
         </ToggleContent>
       </>
@@ -196,6 +208,7 @@ const App = () => {
                 SortedBlogs={SortedBlogs}
                 setSortedBlogs={setSortedBlogs}
                 handleDelete={handleDelete}
+                setOpen={setOpen}
               />
             );
           })
@@ -279,17 +292,37 @@ const App = () => {
     );
   };
   return (
-    <div>
+    <Container>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={(event, reason) => {
+          if (reason === "clickaway") {
+            return;
+          }
+          setOpen(false);
+        }}
+      >
+        <Alert
+          onClose={(event, reason) => {
+            if (reason === "clickaway") {
+              return;
+            }
+            setOpen(false);
+          }}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {notification}
+        </Alert>
+      </Snackbar>
       <Notification />
-      <Link to="/">home</Link>
-      <br />
-      <Link to="/users">views</Link>
-      <br />
+      <Navbar />
       {user ? <></> : loginForm()}
       <Routes>
-        <Route path="/" element={<DisplayBlogs />} />
-        <Route path="/users" element={<DisplayUsers />} />
-        <Route path="/users/:id" element={<DisplayUser />} />
+        <Route path="/" element={<DisplayBlogs setOpen={setOpen} />} />
+        <Route path="/users" element={<DisplayUsers setOpen={setOpen} />} />
+        <Route path="/users/:id" element={<DisplayUser setOpen={setOpen} />} />
         <Route
           path="/blogs/:id"
           element={
@@ -299,12 +332,13 @@ const App = () => {
               SortedBlogs={SortedBlogs}
               setSortedBlogs={setSortedBlogs}
               handleDelete={handleDelete}
+              setOpen={setOpen}
               i={i}
             />
           }
         />
       </Routes>
-    </div>
+    </Container>
   );
 };
 
