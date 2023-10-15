@@ -30,7 +30,7 @@ const App = () => {
   const [username, setUsername] = useState("pulkit");
   const [password, setPassword] = useState("pulkit");
   const [title, setTitle] = useState("Pulkit's New Blog");
-  const [author, setAuthor] = useState("652a43202d7bb78a572ca867");
+  const [author, setAuthor] = useState("652b964e73cb4a258a7cd2a1");
   const [url, setUrl] = useState("https://devpulkit.vercel.app/");
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");

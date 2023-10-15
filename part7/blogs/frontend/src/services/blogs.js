@@ -25,4 +25,8 @@ const Delete = async (id, newObject) => {
   return axios.delete(`${baseUrl}/${id}`);
 };
 
-export default { getAll, create, update, Delete };
+const getComments = async(id) => {
+  return await axios.get(`${baseUrl}/${id}/comments`).then(i=>i.data)
+}
+
+export default { getAll, create, update, Delete,getComments };

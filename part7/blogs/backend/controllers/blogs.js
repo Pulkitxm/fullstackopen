@@ -28,6 +28,35 @@ blogsRouter.get("/api/blogs/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
+blogsRouter.get("/api/blogs/:id/comments", (request, response, next) => {
+  Blog.findById(request.params.id)
+    .then((blog) => {
+      if (blog) {
+        response.json(blog.comments);
+      } else {
+        response.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
+});
+
+blogsRouter.post("/api/blogs/:id/comments", async (request, response, next) => {
+  // request = {comment:"a comment here"}
+  const comment = request.body.comment
+  const id = request.params.id  
+  try {
+    const foundBlog = await Blog.findById(id);
+    if (!foundBlog) {
+      return response.status(404).json({ error: "Blog not found" });
+    }
+    foundBlog.comments.push(comment);
+    await foundBlog.save();
+    response.status(201).json(foundBlog);
+  } catch (error) {
+    next(error);
+  }
+});
+
 const getTokenFrom = (request) => {
   const authorization = request.get("authorization");
   if (authorization && authorization.startsWith("Bearer ")) {
@@ -52,6 +81,7 @@ blogsRouter.post("/api/blogs", async (request, response, next) => {
     author: body.author,
     url: body.url,
     likes: body.likes,
+    comments: [],
   });
 
   const savedBlog = await blog.save();
