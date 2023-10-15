@@ -5,18 +5,17 @@ import Notification from './components/Notification'
 import { useEffect } from 'react'
 
 import anecdoteService from './services/anecdote'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {initialAnecdotes} from './reducers/anecdoteReducer'
 
 const App = () => { 
 
   const dispatch = useDispatch();
-
   useEffect(()=>{
     dispatch(initialAnecdotes())
   },[])
-   
+
   return (
     <div>
       <Notification/>

@@ -17,8 +17,8 @@ const DisplayAnecdote = () => {
     },5000)
   }
 
-  const vote = (id) => {
-    dispatch({ type: 'anecdote/voteAnecdote', payload: id })
+  const vote = (id,anecdotes) => {
+    dispatch(voteAnecdote(id,anecdotes))
     displayNotification(`voted for [ ${anecdotes.filter(i=>i.id==id)[0].content} ]`)
   };
 
@@ -38,18 +38,20 @@ const DisplayAnecdote = () => {
     <div>
       <h2>Anecdotes</h2>
       {/* {anecdotes.sort((a, b) => b.votes - a.votes).map((anecdote) => ( */}
-      {sortedAnecdotes(anecdotes).map((anecdote) => (
+      {sortedAnecdotes(anecdotes).map((anecdote) => {
+        // console.log(anecdote);
+        return (
         <div key={anecdote.id}>
           <div>
             <div>{anecdote.content}</div>
             <div>
               has {anecdote.votes}
-              <button onClick={() => vote(anecdote.id)}>vote</button>
+              <button onClick={() => vote(anecdote.id,anecdotes)}>vote</button>
             </div>
           </div>
           <hr/>
         </div>
-      ))}
+      );})}
     </div>
   );
 };
