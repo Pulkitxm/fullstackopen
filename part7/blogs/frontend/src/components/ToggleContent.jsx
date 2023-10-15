@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import blogService from "../services/blogs";
 import { useDispatch } from "react-redux";
-import {Link} from 'react-router-dom'
-import img from "../assets/open in new tab.png"
+import { Link, useNavigate } from "react-router-dom";
+import img from "../assets/open in new tab.png";
 
 const ToggleContent = (props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(props.visible?true:false);
+  const [visible, setVisible] = useState(props.visible ? true : false);
   const [author, setAuthor] = useState("");
   // if() setVisible(props.visible)
   if (props.type === "form") {
@@ -77,32 +78,27 @@ const ToggleContent = (props) => {
     }, [props.author, props.type]);
     return (
       <div className="note">
-        {
-          props.i?
-          <>{props.i} {") "}</>
-          :
+        {props.i ? (
+          <>
+            {props.i} {") "}
+          </>
+        ) : (
           <></>
-        }
+        )}
         title: <b>{props.blog.title}</b>
         &nbsp;
-        <button
-          onClick={() => {
-            setVisible(!visible);
-            dispatch({
-              type: "notification/changeNotification",
-              payload: `blog: '${props.blog.title}' is toggled`,
-            });
-            setTimeout(() => {
-              dispatch({
-                type: "notification/changeNotification",
-                payload: ``,
-              });
-            }, 5000);
-          }}
-          className="visible"
-        >
-          {visible ? "hide" : props.label}
-        </button>
+        {props.i && props.i!=0? (
+          <button
+            onClick={() => {
+              navigate(`/blogs/${props.blog.id}`);
+            }}
+            className="visible"
+          >
+            {visible ? "hide" : props.label}
+          </button>
+        ) : (
+          <></>
+        )}
         &nbsp;
         <button
           onClick={() => {
@@ -121,13 +117,10 @@ const ToggleContent = (props) => {
         >
           Delete
         </button>
-        <Link to={`/blogs/${props.blog.id}`}>
-          <img src={img} style={{width:'1em',marginLeft:'1em'}} alt="" />
-        </Link>
         {visible ? (
           <>
             <br />
-            url: <a href={props.blog.url}>{props.blog.url}</a>
+            url: <a href={props.blog.url} target="_blank" >{props.blog.url}</a>
             <br />
             <p
               style={{
