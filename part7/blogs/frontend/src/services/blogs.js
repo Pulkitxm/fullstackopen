@@ -29,4 +29,8 @@ const getComments = async(id) => {
   return await axios.get(`${baseUrl}/${id}/comments`).then(i=>i.data)
 }
 
-export default { getAll, create, update, Delete,getComments };
+const addComments = async(id,comment) => {
+  return await axios.post(`${baseUrl}/${id}/comments`,{comment}).then(i=>i.data)
+}
+
+export default { getAll, create, update, Delete,getComments,addComments };

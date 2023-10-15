@@ -4,6 +4,7 @@ import ToggleContent from "./ToggleContent";
 import { useDispatch } from "react-redux";
 import blogServices from "../services/blogs";
 import { useState } from "react";
+import { getUser } from "../services/users";
 
 const DisplayBlog = ({
   blogs,
@@ -15,6 +16,7 @@ const DisplayBlog = ({
 }) => {
   const id = useParams().id;
   const [comments, setcomments] = useState([])
+  const [newComment, setnewComment] = useState('')
   useEffect(() => {
     (async () => {
       setcomments(await blogServices.getComments(id))
@@ -55,6 +57,13 @@ const DisplayBlog = ({
         visible={true}
       />
       <h2>Comments</h2>
+      <div>
+        <input type="text" value={newComment} onChange={e=>setnewComment(e.target.value)} />
+        <button onClick={async()=>{
+          blogServices.addComments(id,newComment)
+          setcomments(comments.concat(newComment))
+        }} >add comment</button>
+      </div>
       <ul>
         {comments.map((comment) => (
           <li key={Math.floor(Math.random()*1000)} >{comment}</li>
