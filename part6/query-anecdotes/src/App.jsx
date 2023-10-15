@@ -1,19 +1,33 @@
+import { useQuery } from '@tanstack/react-query'
+import {fetchAll} from './services/request'
+
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 
 const App = () => {
 
+  const result = useQuery({
+    queryKey: ['anecdotes'],
+    queryFn: ()=>fetchAll(),
+    retry:1
+  })
+  // console.log(JSON.parse(JSON.stringify(result)))
+
+  if ( result.isLoading ) {
+    return <div>loading data...</div>
+  }
+  if ( result.isError ) {
+    return <div>
+      anecdote service not avialable due to problem in server
+    </div>
+  }
+
+  const anecdotes = result.data
+  // console.log('anecdotes', anecdotes)
+  
   const handleVote = (anecdote) => {
     console.log('vote')
   }
-
-  const anecdotes = [
-    {
-      "content": "If it hurts, do it more often",
-      "id": "47145",
-      "votes": 0
-    },
-  ]
 
   return (
     <div>
@@ -24,6 +38,7 @@ const App = () => {
     
       {anecdotes.map(anecdote =>
         <div key={anecdote.id}>
+          <hr />
           <div>
             {anecdote.content}
           </div>
@@ -31,6 +46,7 @@ const App = () => {
             has {anecdote.votes}
             <button onClick={() => handleVote(anecdote)}>vote</button>
           </div>
+          <br />
         </div>
       )}
     </div>
