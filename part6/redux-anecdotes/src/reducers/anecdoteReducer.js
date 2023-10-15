@@ -25,6 +25,9 @@ const anecdoteSlice = createSlice({
         id: getId(),
         votes: 0
       })
+    },
+    appendAnectode(state,action){
+      return JSON.parse(JSON.stringify(state)).concat(action.payload)
     }
   }
 })
@@ -34,10 +37,17 @@ export default anecdoteSlice.reducer
 
 export const initialAnecdotes = () => {
   return async dispatch => {
-    anecdoteService.getAll().then((res)=>{
+    await anecdoteService.getAll().then((res)=>{
       res.forEach(i => {
         dispatch({ type: 'anecdote/addAnectode', payload: i.content })
       });
     })
+  }
+}
+
+export const createAnecdotes = (content) => {
+  return async dispatch => {
+    const newNote = await anecdoteService.addAnecdote(content)
+    dispatch({ type: 'anecdote/appendAnectode', payload:newNote })
   }
 }

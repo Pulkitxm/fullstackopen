@@ -33,7 +33,7 @@ const DisplayAnecdote = () => {
             }
     return sortedArr;
   }
-
+  
   return (
     <div>
       <h2>Anecdotes</h2>

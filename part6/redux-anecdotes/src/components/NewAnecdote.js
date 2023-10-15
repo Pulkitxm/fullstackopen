@@ -1,14 +1,14 @@
 import React from 'react'
-import {useDispatch } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import anecdoteServices from '../services/anecdote'
+import { createAnecdotes } from '../reducers/anecdoteReducer';
 
 const NewAnecdote = () => {
   const dispatch = useDispatch();
 
   const newAnecdote = (event) => {
     event.preventDefault();
-    dispatch({ type: 'anecdote/addAnectode', payload: event.target.content.value })
-    anecdoteServices.addAnecdote(event.target.content.value)
+    dispatch(createAnecdotes(event.target.content.value))
   }
   
   return (
