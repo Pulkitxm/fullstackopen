@@ -34,3 +34,14 @@ export const fetchBooks = gql`
     }
   }
 `
+
+export const editAuthor = gql`
+  mutation Mutation($name: String!, $setBornTo: Int!) {
+    editAuthor(name: $name, setBornTo: $setBornTo) {
+      bookCount
+      born
+      id
+      name
+    }
+  }
+`

@@ -1,5 +1,5 @@
 import {  useQuery } from "@apollo/client";
-
+import AuthorForm from './AuthorForm'
 import {fetchAuthors} from '../gqlQueries'
 
 const Authors = (props) => {
@@ -40,6 +40,8 @@ const Authors = (props) => {
           ))}
         </tbody>
       </table>
+      <br/>
+      <AuthorForm/>
     </div>
   )
 }

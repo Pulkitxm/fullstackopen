@@ -4,16 +4,11 @@ import { useState } from 'react'
 import {CREATE_BOOK,fetchAuthors,fetchBooks} from '../gqlQueries'
 
 const NewBook = (props) => {
-  // const [title, setTitle] = useState('')
-  // const [author, setAuthor] = useState('')
-  // const [published, setPublished] = useState('')
-  // const [genre, setGenre] = useState('')
-  // const [genres, setGenres] = useState([])
-  const [title, setTitle] = useState('Pimeyden tango')
-  const [author, setAuthor] = useState('Reijo Maki')
-  const [published, setPublished] = useState(1997)
-  const [genre, setGenre] = useState('crappy')
-  const [genres, setGenres] = useState([''])
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [published, setPublished] = useState('')
+  const [genre, setGenre] = useState('')
+  const [genres, setGenres] = useState([])
 
   const [ createBook ] = useMutation((CREATE_BOOK), {
     refetchQueries: [ { query: fetchAuthors }, { query: fetchBooks } ]
