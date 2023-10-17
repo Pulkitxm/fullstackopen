@@ -1,12 +1,23 @@
+import { useMutation } from '@apollo/client'
 import { useState } from 'react'
 
-const NewBook = (props) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [published, setPublished] = useState('')
-  const [genre, setGenre] = useState('')
-  const [genres, setGenres] = useState([])
+import {CREATE_BOOK,fetchAuthors,fetchBooks} from '../gqlQueries'
 
+const NewBook = (props) => {
+  // const [title, setTitle] = useState('')
+  // const [author, setAuthor] = useState('')
+  // const [published, setPublished] = useState('')
+  // const [genre, setGenre] = useState('')
+  // const [genres, setGenres] = useState([])
+  const [title, setTitle] = useState('Pimeyden tango')
+  const [author, setAuthor] = useState('Reijo Maki')
+  const [published, setPublished] = useState(1997)
+  const [genre, setGenre] = useState('crappy')
+  const [genres, setGenres] = useState([''])
+
+  const [ createBook ] = useMutation((CREATE_BOOK), {
+    refetchQueries: [ { query: fetchAuthors }, { query: fetchBooks } ]
+  })
   if (!props.show) {
     return null
   }
@@ -14,8 +25,10 @@ const NewBook = (props) => {
   const submit = async (event) => {
     event.preventDefault()
 
-    console.log('add book...')
+    const res = createBook({  variables: {title,author,published,genres} })
 
+    props.setPage("books")
+    
     setTitle('')
     setPublished('')
     setAuthor('')
