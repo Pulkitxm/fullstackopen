@@ -5,7 +5,13 @@ import NewBook from './components/NewBook'
 
 const App = () => {
   const [page, setPage] = useState('authors')
-
+  const [error, setError] = useState('')
+  const showError = (error) => {
+    setError(error)
+    setTimeout(() => {
+      setError('')
+    },5000)
+  }
   return (
     <div>
       <div>
@@ -13,12 +19,21 @@ const App = () => {
         <button onClick={() => setPage('books')}>books</button>
         <button onClick={() => setPage('add')}>add book</button>
       </div>
+      <br />
+      {
+        error &&
+        <div className="error" style={{
+            color:'red'
+        }} >
+            {error}
+        </div>
+      }
 
-      <Authors show={page === 'authors'} />
+      <Authors showError={showError} show={page === 'authors'} />
 
-      <Books show={page === 'books'} />
+      <Books showError={showError} show={page === 'books'} />
 
-      <NewBook show={page === 'add'} setPage={setPage} />
+      <NewBook show={page === 'add'} showError={showError} setPage={setPage} />
     </div>
   )
 }
