@@ -1,39 +1,62 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
-
+import LoginForm from './components/LoginForm'
+import { useApolloClient } from '@apollo/client'
 const App = () => {
+  const [token, setToken] = useState(null)
   const [page, setPage] = useState('authors')
   const [error, setError] = useState('')
+  const client = useApolloClient()
+  useEffect(() => {
+    if (window.localStorage['library-token']) {
+      setToken(window.localStorage['library-token'])
+    }
+  }, [])
+  const logout = () => {
+    setToken(null)
+    window.localStorage.removeItem('phonenumbers-user-token')
+    client.resetStore()
+  }
   const showError = (error) => {
     setError(error)
     setTimeout(() => {
       setError('')
-    },5000)
+    }, 5000)
   }
   return (
     <div>
       <div>
         <button onClick={() => setPage('authors')}>authors</button>
         <button onClick={() => setPage('books')}>books</button>
-        <button onClick={() => setPage('add')}>add book</button>
+        {
+          !!token ?
+            <>
+              <button onClick={() => setPage('add')}>add book</button>
+              <button onClick={() => {
+                logout()
+                setPage('login')
+              }}>logout</button>
+            </>
+            :
+            <button onClick={() => setPage('login')}>login</button>
+        }
       </div>
       <br />
       {
         error &&
         <div className="error" style={{
-            color:'red'
+          color: 'red'
         }} >
-            {error}
+          {error}
         </div>
       }
 
       <Authors showError={showError} show={page === 'authors'} />
-
       <Books showError={showError} show={page === 'books'} />
-
       <NewBook show={page === 'add'} showError={showError} setPage={setPage} />
+      <LoginForm show={page === 'login'} setToken={setToken} setError={setError} setPage={setPage} />
     </div>
   )
 }

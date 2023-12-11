@@ -9,7 +9,13 @@ const schema = new mongoose.Schema({
     books: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
-    }]
+    }],
+    friends: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 })
 
 module.exports = mongoose.model('User', schema)

@@ -105,6 +105,7 @@ const resolvers = {
   },
   Mutation: {
     addBook: async (root, args, context) => {
+      console.log(context);
       if (!context.currentUser) {
         throw new GraphQLError('You are not authorized', {
           extensions: {
@@ -128,6 +129,7 @@ const resolvers = {
       return await book.populate('author')
     },
     editAuthor: async (root, args, context) => {
+      console.log(context);
       if (!context.currentUser) {
         throw new GraphQLError('You are not authorized', {
           extensions: {
@@ -150,8 +152,8 @@ const resolvers = {
             }
           })
         })
-    },
-    login: async (root, args) => {
+      },
+      login: async (root, args) => {
       const user = await User.findOne({ username: args.username })
       if (!user || args.password !== 'secret') {
         throw new GraphQLError('wrong credentials', {
