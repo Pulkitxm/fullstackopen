@@ -15,6 +15,7 @@ Ex - to read the solution of first question of third part you can search a commi
 - Cypress (End-to-End testing)
 - Redux (State Management Tools)
 - React-query (Transact Query, managing and storing data retrieved from the server)
+- Apolo GraphQl ( Communicating with servers)
 
 ## Course Structure
 

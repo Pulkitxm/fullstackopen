@@ -10,13 +10,21 @@ const AuthorForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [alterAuthor] = useMutation(editAuthor,{
-    refetchQueries:[ {quer:fetchAuthors} ]
+    refetchQueries:[ {query:fetchAuthors} ]
   })
-
+  const getAuthors =  useQuery(fetchAuthors)
   const authors = useQuery(fetchAuthors).data.allAuthors.map(author=>({ value:author.name , label:author.name }))
   
   const handleUpdate = () => {
-    alterAuthor({variables:{name:selectedOption.value,setBornTo:parseInt(year)}})
+      alterAuthor({
+        variables: {
+          name: selectedOption.value,
+          setBornTo: parseInt(year)
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
     setyear("")
   }
   
@@ -30,7 +38,7 @@ const AuthorForm = () => {
         options={authors}
       />
       <br />
-      born<input type="text" value={year} onChange={e=>setyear(e.target.value)} />
+      born: <input type="text" value={year} onChange={e=>setyear(e.target.value)} />
       <br />
       <br />
       <button onClick={handleUpdate} >update author</button>

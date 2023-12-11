@@ -6,15 +6,10 @@ const Books = (props) => {
 
   const result = useQuery(fetchBooks)
   
-  if (!props.show) {
+  if (!props.show || result.loading) {
     return null
   }
-
-  const books = result.data.allBooks.map(book=>{
-    delete book.__typename
-    return book
-  })
-
+  const books = result.data.allBooks
   return (
     <div>
       <h2>books</h2>
@@ -27,9 +22,9 @@ const Books = (props) => {
             <th>published</th>
           </tr>
           {books.map((a) => (
-            <tr key={a.id}>
+            <tr key={a.published + a.title}>
               <td>{a.title}</td>
-              <td>{a.author}</td>
+              <td>{a.author.name}</td>
               <td>{a.published}</td>
             </tr>
           ))}
