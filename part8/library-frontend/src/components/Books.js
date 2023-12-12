@@ -1,7 +1,7 @@
 import {  useQuery } from "@apollo/client";
 import {useState,useEffect} from 'react'
 import {fetchBooks} from '../gqlQueries'
-
+import {v4 as uuid} from 'uuid'
 const Books = (props) => {
   const [orgbooks, setorgbooks] = useState([])
   const [books, setbooks] = useState([])
@@ -35,7 +35,7 @@ const Books = (props) => {
             <th>published</th>
           </tr>
           {books.map((a) => (
-            <tr key={a.published + a.title}>
+            <tr key={uuid()}>
               <td>{a.title}</td>
               <td>{a.author.name}</td>
               <td>{a.published}</td>
@@ -46,7 +46,7 @@ const Books = (props) => {
       {
         genres.map(genre => {
           return <button
-            key={genre}
+            key={uuid()}
             onClick={() => {
               setbooks(orgbooks.filter(book => {
                 return book.genres.indexOf(genre)!=-1
@@ -55,6 +55,12 @@ const Books = (props) => {
           >{genre}</button>
         })
       }
+      <button
+        key={uuid()}
+        onClick={() => {
+          setbooks(orgbooks)
+        }}
+      >all</button>
     </div>
   )
 }

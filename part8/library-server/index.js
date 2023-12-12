@@ -101,6 +101,25 @@ const resolvers = {
         authors[i] = { ...author, bookCount };
       }
       return authors
+    },
+    me: async (root, args, context) => {
+      console.log(context.currentUser);
+      if (context.currentUser) {
+        const { username, _id, favoriteGenre } = context.currentUser
+        console.log({
+          username,
+          favoriteGenre,
+          id: _id
+        });
+        return {
+          username,
+          favoriteGenre,
+          id: _id
+        }
+      } else {
+        console.log(null);
+        return null
+      }
     }
   },
   Mutation: {
@@ -123,13 +142,11 @@ const resolvers = {
       if (author.length == 1) {
         author = author[0]
       }
-      console.log(author);
       const book = new Book({ ...args, author: author._id })
       await book.save();
       return await book.populate('author')
     },
     editAuthor: async (root, args, context) => {
-      console.log(context);
       if (!context.currentUser) {
         throw new GraphQLError('You are not authorized', {
           extensions: {
@@ -141,7 +158,7 @@ const resolvers = {
       return await Author.findOneAndUpdate({ name: args.name }, { born: args.setBornTo }, { new: true })
     },
     createUser: async (root, args) => {
-      const user = new User({ username: args.username })
+      const user = new User({ username: args.username, favoriteGenre: args.favoriteGenre })
       return user.save()
         .catch(error => {
           throw new GraphQLError('Creating the user failed', {
@@ -152,8 +169,8 @@ const resolvers = {
             }
           })
         })
-      },
-      login: async (root, args) => {
+    },
+    login: async (root, args) => {
       const user = await User.findOne({ username: args.username })
       if (!user || args.password !== 'secret') {
         throw new GraphQLError('wrong credentials', {
@@ -186,6 +203,7 @@ startStandaloneServer(server, {
       )
       const currentUser = await User
         .findById(decodedToken.id).populate('friends')
+      console.log("currentUser", currentUser);
       return { currentUser }
     }
   },

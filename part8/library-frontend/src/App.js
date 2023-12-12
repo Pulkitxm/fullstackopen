@@ -4,6 +4,7 @@ import Books from './components/Books'
 import NewBook from './components/NewBook'
 import LoginForm from './components/LoginForm'
 import { useApolloClient } from '@apollo/client'
+import FavBooks from './components/FavBooks'
 const App = () => {
   const [token, setToken] = useState(null)
   const [page, setPage] = useState('books')
@@ -16,7 +17,7 @@ const App = () => {
   }, [])
   const logout = () => {
     setToken(null)
-    window.localStorage.removeItem('phonenumbers-user-token')
+    window.localStorage.removeItem('library-token')
     client.resetStore()
   }
   const showError = (error) => {
@@ -34,6 +35,7 @@ const App = () => {
           !!token ?
             <>
               <button onClick={() => setPage('add')}>add book</button>
+              <button onClick={() => setPage('fav')}>recommended</button>
               <button onClick={() => {
                 logout()
                 setPage('login')
@@ -55,6 +57,7 @@ const App = () => {
 
       <Authors showError={showError} show={page === 'authors'} />
       <Books showError={showError} show={page === 'books'} />
+      <FavBooks showError={showError} show={page === 'fav'} />
       <NewBook show={page === 'add'} showError={showError} setPage={setPage} />
       <LoginForm show={page === 'login'} setToken={setToken} setError={setError} setPage={setPage} />
     </div>
