@@ -14,13 +14,7 @@ const Authors = (props) => {
   if (result.loading){
     return <div>loading...</div>
   }
-  
-  // const authors = result.data.allAuthors
-  const authors = result.data.allAuthors.map(author=>{
-    delete author.__typename;
-    return author
-  })
-
+  const authors = result.data.allAuthors
   return (
     <div>
       <h2>authors</h2>
@@ -32,7 +26,7 @@ const Authors = (props) => {
             <th>books</th>
           </tr>
           {authors.map((a) => (
-            <tr key={a.id}>
+            <tr key={a.name+a.born}>
               <td>{a.name}</td>
               <td>{a.born}</td>
               <td>{a.bookCount}</td>
