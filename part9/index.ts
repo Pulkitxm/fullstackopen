@@ -9,6 +9,7 @@ app.get("/", (_req, res) => {
 
 app.get("/bmi", (req, res) => {
     try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { weight, height } = req.query;
         if (isNaN(Number(weight)) || isNaN(Number(height))) {
             throw new Error("Invalid Data")

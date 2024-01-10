@@ -8,6 +8,7 @@
     "dev": "ts-node-dev index.ts",
     "ts-node": "ts-node",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .ts .",
     "bmiCalculator": "ts-node bmiCalculator.ts",
     "exerciseCalculator": "ts-node exerciseCalculator.ts 2"
   },
@@ -16,6 +17,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
     "ts-node-dev": "^2.0.0"
   }
 }
