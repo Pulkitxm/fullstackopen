@@ -1,0 +1,1032 @@
+[33mcommit 6fd866f3d047e7a6f2fb2e6919fa7757c76a6871[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jan 10 17:56:30 2024 +0530
+
+    p9q9 Patientor backend
+
+[33mcommit 152afa683f599e33ae835d3f281f08c53f82b5ba[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jan 10 17:42:56 2024 +0530
+
+    setup for Patientor project
+
+[33mcommit d61445ec65c9878cf2f65da3d231262ca0833649[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jan 10 16:50:27 2024 +0530
+
+    p9q7 endpoint to exercise calculator
+
+[33mcommit 370c3b1281afb7c3b32bf315c064e0c5570cae34[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jan 10 15:31:09 2024 +0530
+
+    p9q6 esling config
+
+[33mcommit 4fbcc883343b034fb9d6595941e11601dbfc944d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Dec 31 13:28:22 2023 +0530
+
+    certificates updates
+
+[33mcommit 1e757181e7239aa45d00057c4b59036d8173e7a0[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 20:52:27 2023 +0530
+
+    p9q5 webBMI
+
+[33mcommit 9767337f6d8624d15cce94a01def381418e6c7bc[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 20:34:13 2023 +0530
+
+    p9q4 HTTP GET endpoint hello
+
+[33mcommit a45374215296cddf5a78f85efa9b614f9afec0a3[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 12:20:55 2023 +0530
+
+    p9q2 exerciseCalculator
+
+[33mcommit 7b293d70662204d13225ecbb021573cb7efbb87f[m
+Merge: 9968d1f ec6428f
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 11:54:39 2023 +0530
+
+    Merge branch 'main' of https://github.com/Pulkitxm/fullstackopen
+
+[33mcommit 9968d1fffa95a94131b47e4f76263e6f13e8863a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 11:54:36 2023 +0530
+
+    mege branches origin/main
+
+[33mcommit 9da430cb14f80fbfe549c8746c0e600f9da64deb[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Dec 14 00:07:42 2023 +0530
+
+    p9q1 bmiCalculator.ts
+
+[33mcommit ec6428f71331e93a507349372964f9972653fa36[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Dec 12 12:26:09 2023 +0530
+
+    p8q20  logged-in user's favourite genre
+
+[33mcommit 232ad26084cfd6defe32a2c3ab1298f9dbe97df1[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Dec 12 00:02:04 2023 +0530
+
+    p8q19 book list by genre
+
+[33mcommit 6f810bb9403ce9bb8c9607de2bffd958547913f9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Dec 11 23:29:44 2023 +0530
+
+    p8q17,18 login view+ backend functionality
+
+[33mcommit 9df32fc594ea4c53d5d921eda8f7c0753201cd16[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Dec 11 19:09:24 2023 +0530
+
+    p8q16 user and logging in
+
+[33mcommit 2bc0cbc3b23608b39d923b126b87aedfda5c89e6[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Dec 11 14:54:23 2023 +0530
+
+    p8q15 database validation
+
+[33mcommit 9fc56d987762e6d1d40ebd521b9d2023eede706d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Dec 11 14:39:25 2023 +0530
+
+     p8q13,14 database + error resolving in frontend
+
+[33mcommit e9edf24715013573e7d4f5cea382fe9f78c68679[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 23:11:07 2023 +0530
+
+    p8q12 birth year can be set only for an existing author
+
+[33mcommit c72d171fc055d2c401d2e8a74a0f768d472f38b8[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 22:58:08 2023 +0530
+
+    p8q11 set authors birth year
+
+[33mcommit 6f632f7929723f0ad3ddc6fc6f74f845359ff8e4[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 22:39:57 2023 +0530
+
+    p8q10 add new books
+
+[33mcommit 62aedf517a8698959f5ceb561b0ec02790571acc[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 22:17:30 2023 +0530
+
+    fixing minor issues
+
+[33mcommit 079094551b0b60fe568cb5b9baab1c846e293526[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 21:46:18 2023 +0530
+
+    Books view
+
+[33mcommit 2516d332c42026f226f0014f1ed0be53c798691d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 21:46:00 2023 +0530
+
+    p8q8 Authors view
+
+[33mcommit b7f195293ec801acd05b356f1ec35a8e746597d8[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 17 21:45:41 2023 +0530
+
+    setup files for p8q8
+
+[33mcommit 36107c8332902ac2824996da65350d30f9de2ca6[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 23:33:22 2023 +0530
+
+    p8q7 mutation editAuthor
+
+[33mcommit 8100fa6b41f07e8deb7a2cd1a74859e37d783bd3[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 23:16:56 2023 +0530
+
+    p8q6 mutation addBook
+
+[33mcommit 8fa6df674e74c485622de76c37056bbb26d0fe81[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 22:50:44 2023 +0530
+
+    p8q5 include only books of that genre
+
+[33mcommit eeb799e3e6fa7d1e112ac8f47e1de10fadc1a078[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 22:41:20 2023 +0530
+
+    p8q4  include only books written by that author
+
+[33mcommit 6042d21005ac9d07b05a1aac14b8a22e019fa30f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 22:29:54 2023 +0530
+
+    p8q3 field bookCount
+
+[33mcommit d8261b44cd0c6c72b93b233eafb1d0665c6bba2c[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 22:07:19 2023 +0530
+
+    p8q2 query allBooks
+
+[33mcommit 8a66889dda203b1f586141836de8aaac96a77f20[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 22:02:44 2023 +0530
+
+    p8q1 queries bookCount and authorCount
+
+[33mcommit a7d5af5dd4ad0cceb07d93b38b187b1e89d181f0[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 21:46:48 2023 +0530
+
+    base files for p8q1
+
+[33mcommit fb5599079ee84a103d482f34c8a5827224400bd9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 00:19:54 2023 +0530
+
+    updates to certificate
+
+[33mcommit 4d82d248528a68f86fbbaeefa5ee0b64c368ff28[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 00:11:42 2023 +0530
+
+    p6q24 error handling
+
+[33mcommit 070f4ccbc09371b5ed070267bf636b23b14f7655[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 16 00:08:16 2023 +0530
+
+    p6q23 notification using useReducer
+
+[33mcommit a44c8fed3fe95bcc4b19151db7912bb434326bae[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 23:59:38 2023 +0530
+
+    p6q22 voting
+
+[33mcommit e410b5794784e48d324631e343f28dc28d109683[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 23:54:25 2023 +0530
+
+    p6q21 adding a new annecdote
+
+[33mcommit 47f18ec79a4984ade9dd95628efcc051eecbd0f3[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 23:22:13 2023 +0530
+
+    p6q20 retrieve anecdote from server and handling server error
+
+[33mcommit f4007b860426ed993dc184c8e0906d59e9ed279b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 23:21:38 2023 +0530
+
+    setup for part6 query-anecdotes
+
+[33mcommit 45dbcc016635e17e62fbf81d07263c6e8c9f747a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 18:38:51 2023 +0530
+
+    p6q19 creating and implementing notificatiion
+
+[33mcommit ad4c512e400b6e597b4b3e74e14d4a7d5a2ddf85[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 18:30:59 2023 +0530
+
+    p6q19 voting with thunk
+
+[33mcommit 6cd6c4265283523d99093f56e566c9d0b3aeef98[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 17:55:06 2023 +0530
+
+    p6q17 creation of a new anecdote
+
+[33mcommit 241d4011052a763dc2e9b4db068a4832f7b4746d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 17:42:46 2023 +0530
+
+    p6q16 initialization using redux thunk
+
+[33mcommit bc17c8ea4ddec35395379d6cfc1351c73a043bad[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 15:19:51 2023 +0530
+
+    p7q20 styling app
+
+[33mcommit deb55a85f66b559b008048e8a0cc0c7cb206e739[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 14:14:39 2023 +0530
+
+    p7q19 users can add comments from frontend
+
+[33mcommit ec2318dd0ed6095141c1851bc906674418888854[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 14:05:02 2023 +0530
+
+    p7q19  frontend displays the comments
+
+[33mcommit 902950b9af08422af65a800ab1dd7eb6c5f9ff23[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 13:42:28 2023 +0530
+
+    minor blog updates
+
+[33mcommit 91dd8fc97c5329ea19b42d0b90ddde40225fd84b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 02:19:27 2023 +0530
+
+    p7q16  separate view for blog posts
+
+[33mcommit 88595862b752921792ee20c8d98ca843c54d4ee1[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 01:46:56 2023 +0530
+
+    p7q15 view for individual users
+
+[33mcommit d0a0a260e79c16c744ce6e637afeba5049f704a9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 01:23:30 2023 +0530
+
+    p7q14 displays blogs created - users
+
+[33mcommit 04ef4b83478c6158dcd50227fc32a52f09b12869[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Oct 15 00:03:54 2023 +0530
+
+    notification for adding blog
+
+[33mcommit 06b4122e23059852223aacac5702eb8f31844b6b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 23:58:31 2023 +0530
+
+    p7q13 useReducer-hook for the log-in
+
+[33mcommit 29897170a5ee061c15110f375dd5d9cc5cf88fcc[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 22:48:00 2023 +0530
+
+    p7q12 like and delete a blog
+
+[33mcommit ec5e6a85bc27cd87d8c303d188e708f26eefbdc2[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 22:09:29 2023 +0530
+
+    p7q11 implementation of redux to add and view blogs
+
+[33mcommit c07354c91d3697660147d7c2b8b48da0a84d741e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 21:12:53 2023 +0530
+
+    updated Readme.md
+
+[33mcommit efd4f73a5da8d410832a6c76225e3ab12248d693[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 15:44:14 2023 +0530
+
+    p7q10 notification using redux
+
+[33mcommit 36cb87cde5abfa8bf0b2cb7a3b56752750967e2f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 14 13:08:04 2023 +0530
+
+    p7q9 implemented prettier
+
+[33mcommit a50158bd4f83318b42f7867b3fd154890a70925e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 22:35:16 2023 +0530
+
+    4 credits Certificate
+
+[33mcommit 4b9e68604cd84df2de9c06f0bb3edae9cc2a6acb[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 21:09:17 2023 +0530
+
+    p7q8notes and persons using custom hooks
+
+[33mcommit 2c6508c48c62c55754a88a86ddac3f25c2a97700[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 20:30:39 2023 +0530
+
+    p7q7 country search using custom hooks
+
+[33mcommit 1b0b62d0893d1de0ea0d8818ff13149d9906187e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 18:50:45 2023 +0530
+
+    base file for part7
+
+[33mcommit b1e05a2607d82f9dd81154f8ce44601751f39845[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 18:40:28 2023 +0530
+
+    p7q6 fixing reset error in inputs
+
+[33mcommit 163c8f7e8d9ecea9078254139f64d40e67208701[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 18:20:37 2023 +0530
+
+    p7q5 clear field in CreateNew
+
+[33mcommit 730465f772eb675a80a403176d39e8b2d745c9c5[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 18:09:42 2023 +0530
+
+    p7q4 useField custom hook
+
+[33mcommit a44311040898ca66d34a60b93122fdfa6e551cae[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 17:54:57 2023 +0530
+
+    p7 sepearting each component to it .jsx file
+
+[33mcommit d2de661514e8a6074d46de5fd953de4b10deef02[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 16:00:59 2023 +0530
+
+    p7q3 Improve the functionality of create new anecdote
+
+[33mcommit b66484a9efe9132b53bcb96aef1333712297450f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 15:51:37 2023 +0530
+
+    p7q2 view for showing a single anecdote
+
+[33mcommit 9dd830340b2a055a487d460dd59c4881e655042f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 15:34:33 2023 +0530
+
+    p7q1 routed anecdotes
+
+[33mcommit d1532890319ec26804c3c9d88f8f910ccfde60f5[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 12 15:25:06 2023 +0530
+
+    base files for part7
+
+[33mcommit 287138a663f3b8039b974cacde17ceb52d5b004f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 10 00:13:23 2023 +0530
+
+    p6q15 anecdotes are stored in the backend
+
+[33mcommit 2b006a3e447ea3c73cf1543e4b12f98f987c12e3[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 10 00:05:13 2023 +0530
+
+    p6q14 fetch the anecdotes from the backend
+
+[33mcommit 803810d69b7759bb53b2c6abe50eb4d7d9734771[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 9 23:08:27 2023 +0530
+
+    p6q13 notification content for 5secs
+
+[33mcommit 27ece638e810a31e4d35b207fca0c98f182ea608[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 9 22:59:09 2023 +0530
+
+    p5q12 creating notification reducer
+
+[33mcommit 9a1f279d3c4674b69bb1c2ade739fe9ec8684003[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 9 22:40:20 2023 +0530
+
+    p6q10 convert to createSlice()
+
+[33mcommit fdede6a65572faf8df93f5ab6759d9ff296bfef6[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Oct 7 10:27:43 2023 +0530
+
+    p5q9 filtering for the anecdotes
+
+[33mcommit 49582d96d82181fd147bbf03dda5196680c190b2[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 5 23:46:29 2023 +0530
+
+    sorted anecdotes + dividing into coponents + action creators
+
+[33mcommit eac2160706b97886137a401251fd81fd4c3429d5[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 5 23:12:03 2023 +0530
+
+    p6q4 functionality for adding new anecdotes
+
+[33mcommit 0a777d69b7effb1ca0fa4f99690568c1f085eac7[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 5 22:57:06 2023 +0530
+
+    p6q3 functionality for voting anecdotes
+
+[33mcommit 19606e25f64071e429f075a380a57f4568329552[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Oct 5 15:14:35 2023 +0530
+
+    p6q1q2 implementation of the reducer and its tests and functionality
+
+[33mcommit a59c3212acff6a60b407b3f371d996c0288d98c7[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Oct 4 00:29:27 2023 +0530
+
+    p5q23 blogs are ordered according to likes
+
+[33mcommit bf5ad6cf7275ef4d7c313b16f63d75a04d280f0c[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Oct 4 00:06:54 2023 +0530
+
+    p5q20 users can like a blog
+
+[33mcommit e43562e82c6a794c49f1b7790d6d6dd788c1ca10[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 3 23:53:20 2023 +0530
+
+    p5q19 logged-in user can create a new blog
+
+[33mcommit 25c6d79b71570a04c1eb3f9a4a8116a95e170efa[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 3 21:02:04 2023 +0530
+
+    p5q18 successful and unsuccessful login attempts
+
+[33mcommit 4be119c0f9d0e5e34c5894a10e3ff95519d260dd[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Oct 3 20:37:30 2023 +0530
+
+    p5q17 display login form by default
+
+[33mcommit 35c6448ec53371226dd8c2ea28c4571ba70f2239[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Oct 2 15:26:19 2023 +0530
+
+    removed node_modules
+
+[33mcommit 7525b07473182b5ac9e377638ff02734bad68062[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Sep 24 22:22:14 2023 +0530
+
+    pq16 likes author and url after click
+
+[33mcommit 1ea2fc27b3fbd53fb4436a4bb11cbe0fe162384d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Sep 13 15:05:39 2023 +0530
+
+    p5q14 test increased by 2
+
+[33mcommit eebe4aac8f850534cc59e02aba8598d74fe90a50[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Sep 13 14:46:07 2023 +0530
+
+    p5q14 button click to show likes and url
+
+[33mcommit 6043dfa3fcce0790e0576bce9b07508accdf00bb[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Sep 13 13:45:11 2023 +0530
+
+    p5q13 render blog test
+
+[33mcommit 1ff46708cf4b544f8977207060c7c214d636320a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Aug 31 21:09:03 2023 +0530
+
+    p5q11 deleting a blog
+
+[33mcommit 5aeba936b3d8748aed666e2b6b2f9c93ef0d6618[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri Aug 25 22:11:37 2023 +0530
+
+    p5q10 sorting on likes
+
+[33mcommit dcf3ec4c19c4f9a78080c22cddf3c7e73d4d0d17[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri Aug 25 19:35:30 2023 +0530
+
+    p5q9 like button implementation
+
+[33mcommit 65a65224731e85df44daa9c80a2afd7fd96a3277[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri Aug 25 18:30:27 2023 +0530
+
+    p5q8 fixing user not shwoing in new bogs
+
+[33mcommit ed4da7d4f71249f5d47ac594304131ca3762d30d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri Aug 25 17:21:15 2023 +0530
+
+    p5q7 view/hide in blogs
+
+[33mcommit 18aee2cb70a5b924c1901a1c83f0024f8dc48a04[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Aug 23 23:35:07 2023 +0530
+
+     p5q5,6 toggleableContent
+
+[33mcommit 3c61190528da557d3d6ee17687212e56bc446eab[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Aug 21 19:21:19 2023 +0530
+
+    p5q3 add new blogs for logged ins
+
+[33mcommit f3b5ac0f421d593c220f223cbecb61a6d3170be9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Aug 20 16:20:06 2023 +0530
+
+    Create README.md
+
+[33mcommit 2b4290a0d90c7698599d0855401b34f1b8e11d1a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Aug 20 16:10:09 2023 +0530
+
+    p5q2 login permanent
+
+[33mcommit adb05534a1b3da34b9e4f3e56ad1d73bf5424384[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Aug 20 16:07:33 2023 +0530
+
+    p5q1 loginForm and blogForm
+
+[33mcommit 5bb757c5096cae5e94453662da3a2b7d48462a9b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Aug 17 21:54:38 2023 +0530
+
+    p4q18 token auth
+
+[33mcommit 24ecc1a52f1d8076746d6c60ec6397474e691957[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Aug 16 22:33:46 2023 +0530
+
+    p4q17 populate user and blog
+
+[33mcommit 4f128f7dab0303aa5525ae913692af1f6f0943e4[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Aug 16 22:32:49 2023 +0530
+
+    p4q15 create new users
+
+[33mcommit e7f3b0d6d696d406e48ef3c5f924a435c7983912[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Aug 15 15:37:33 2023 +0530
+
+    p4q14 updating single blog
+
+[33mcommit b3057eb80e581ccfaefb3d80215a05987b56b143[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Aug 15 14:51:10 2023 +0530
+
+    p4q13 deleting single blog
+
+[33mcommit 39fb11a2f0c4d7dff5d1bbd323b22535053ebcfc[m
+Author: = <=>
+Date:   Tue Aug 15 13:05:43 2023 +0530
+
+    p4q10 new blog added correctly
+
+[33mcommit c543d910158f2b1ac3e2ce488a090f87ed168ce2[m
+Author: = <=>
+Date:   Mon Aug 14 20:43:15 2023 +0530
+
+    p4q9 verify id prop
+
+[33mcommit d4c109b31326a74c52541b8f5770d8a47c0feabb[m
+Author: = <=>
+Date:   Mon Aug 14 19:41:54 2023 +0530
+
+    p4q8 supertest [ return as json ]
+
+[33mcommit 75bbf87c4e36eca6afd52e9d9ead6342844f185e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 30 01:45:02 2023 +0530
+
+    p4q5 adding favourite blog to tests
+
+[33mcommit 8fc0dfa11c67bf5e13f32186d8b1ba80c36e7a7c[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 29 22:49:05 2023 +0530
+
+    p4q3 adding dummy tests to blogs
+
+[33mcommit 3431065401bcf3947a2b8e8fc19f9cd8bed06896[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 29 17:53:57 2023 +0530
+
+    p4q1,2 blog list application
+
+[33mcommit 2ede195bccdfd793ee6d7860d431fb0aaa64de20[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Jul 27 16:40:45 2023 +0530
+
+    p3q19-22 phonebook
+
+[33mcommit de9cb06251ad049972545cb6d6288ce43ddf860b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Jul 27 01:05:24 2023 +0530
+
+    p3q18 info page updation
+
+[33mcommit e942178b608493f36bf87b976526ab2e151185f4[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Thu Jul 27 00:21:08 2023 +0530
+
+    p3q17 adding duplicate logic
+
+[33mcommit 3e0251b7dce6982355f6b537f9b326ed1bdf7677[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jul 26 22:15:31 2023 +0530
+
+    p3q16 error handling
+
+[33mcommit b73f9a5b9ca81a76c819f30cb095e651e0ec2146[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jul 26 21:05:51 2023 +0530
+
+    p3q15 deleting of contacts
+
+[33mcommit 988fcdd8be344b1c3f4a776d5e19996193344506[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jul 26 16:08:23 2023 +0530
+
+    p3q14 adding new contacts to the phonebook
+
+[33mcommit f7e64b667c2ab1d5c326d513a73936957b063fbe[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Wed Jul 26 15:29:01 2023 +0530
+
+    p3q11 fetching stata from mongodb
+
+[33mcommit d3d1cc128ccc0955971b33fdff5d6b49ca6adbb3[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 25 15:46:19 2023 +0530
+
+    p3q12 connecting mongodb
+
+[33mcommit 08c4e02878ca20a789a81656bc50ef72451aeba5[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 23 21:08:07 2023 +0530
+
+    P3Q11
+
+[33mcommit 847ce2b3857218aef4dbb9a230730b24d7ed5178[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 23 20:23:20 2023 +0530
+
+    p3q10 deployment of phonebook app
+
+[33mcommit 7b2e1960c20901c2d4472942e007f1fd331ed66e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 23 20:22:15 2023 +0530
+
+    ignore node_modules
+
+[33mcommit 971a546c1891ab871dba7e3c32a697c5cfba4bda[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 23 20:22:05 2023 +0530
+
+    added build command
+
+[33mcommit f935dd1113c0b1e64c8d4e7a9de12cd020eb7cac[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 23 19:41:09 2023 +0530
+
+    p3q10 prodcution build from part 2
+
+[33mcommit 7e9686d2e06c2ac97d3fabe54f33582e9be77587[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 16 23:00:46 2023 +0530
+
+    p3q8
+
+[33mcommit 22113d5aa92d09fe0e1ecef5306f8994c890bf46[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Jul 16 22:50:23 2023 +0530
+
+    p3q7
+
+[33mcommit 4defebda0b9e29138e5797aeea4e4ea378a43f55[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 23:40:37 2023 +0530
+
+    p3q6
+
+[33mcommit 636c248df38c75295b266143e53caf2d69c8b860[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 23:22:16 2023 +0530
+
+    p3q5
+
+[33mcommit 6019a0ac4d7276041352e45512c8b669568fa398[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 22:10:04 2023 +0530
+
+    p3q4
+
+[33mcommit 8ff27407186b3cbceb6e8525044cd2ceee2c36c4[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 22:01:43 2023 +0530
+
+    p3q3
+
+[33mcommit d59be1be1d8d31794f495edf8a0fc1f832ab53cb[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 21:51:52 2023 +0530
+
+    p3q2
+
+[33mcommit b0cf6bbb8110f704292c35ff1475603f97a3ad6d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sat Jul 15 21:42:20 2023 +0530
+
+    p3q1
+
+[33mcommit 525a6348eba63b97527629bfbb27097ce3814899[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 19:51:23 2023 +0530
+
+    minor changes in phonebook
+
+[33mcommit c965e33f05cd1cce9b3a3ba17f24635e970cb856[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 19:31:33 2023 +0530
+
+    p2q17
+
+[33mcommit 83e9b7ed4786ed93e57fffddc36c57c52a22432e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 19:26:08 2023 +0530
+
+    p2q16
+
+[33mcommit bfcd0af1575ec104ea2974a0243a75887321af2b[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 14:09:45 2023 +0530
+
+    p2q15
+
+[33mcommit ac64518136151e6cc9d6e45b29d58a6316ca3393[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 13:47:37 2023 +0530
+
+    p2q14
+
+[33mcommit a96f6bd43c2901f214df1615d450d1f509287767[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 12:47:09 2023 +0530
+
+    p2q13
+
+[33mcommit cad7eb0be833d6f02fe2534aeeb4f0bc9427f649[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 12:40:11 2023 +0530
+
+    p2q12
+
+[33mcommit 9a04f931687cff6647b360865b1c9a5e7619b0b7[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 12:39:30 2023 +0530
+
+    p2q9 solved the error for undefined personName
+
+[33mcommit 5791bbd2f374fecc63707aaef62983e0043cdac9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Tue Jul 11 09:27:30 2023 +0530
+
+    p2q11
+
+[33mcommit 97af2f28500eb3ea7bf0ba52f1d67445092d0c4e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Jul 10 18:24:31 2023 +0530
+
+    p2q10
+
+[33mcommit 6b6a4bc5f02fb5407b78586307f8dfa0ae274acf[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Jul 10 18:00:16 2023 +0530
+
+    p2q9
+
+[33mcommit 452a46f5464b0ac30cb75697aed39422e3b8c2d0[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon Jul 10 17:43:37 2023 +0530
+
+    p2q8
+
+[33mcommit cc97e174ae89e7d17d31aed9d1b5ca97c3d4c738[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 15 23:29:32 2023 +0530
+
+    p2q7
+
+[33mcommit f683c01c1d011864cf9bf281d3e0f8f1920978d7[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 15 23:22:37 2023 +0530
+
+    p2q6
+
+[33mcommit 6818977725f7ab1dde0cfa0f1d77a0859e06f508[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 21:28:27 2023 +0530
+
+    p2q5
+
+[33mcommit 32cadcd0690452a526659c48500981f2df81fd28[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 21:24:03 2023 +0530
+
+    p2q5
+
+[33mcommit 21ab5f47d10e2f595b212f54e0ff53e57c57e21d[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 21:13:49 2023 +0530
+
+    p2q4
+
+[33mcommit 2d8a37b8fe5beaf0048e13b74500a14ca61126b7[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 20:56:08 2023 +0530
+
+    p2q3
+
+[33mcommit 46c0211353b3d52df1e182e83cd2214ae9f2f60f[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 14:59:30 2023 +0530
+
+    p2q2
+
+[33mcommit f17a3dfcada63d4b43f6da5896e59dcc51114103[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 13:46:59 2023 +0530
+
+    p2q1
+
+[33mcommit aa7bce98a123fbd0aa0d4849edf04c2a9271b090[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 03:25:03 2023 +0530
+
+    p1q14
+
+[33mcommit e8950078aba48af13c8a5bff6b17b56b568c8d0e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 03:01:16 2023 +0530
+
+    p1q13
+
+[33mcommit 037fd82952412b8c26de99e71ef3b53b381a7e75[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun May 14 02:56:04 2023 +0530
+
+    p1q13
+
+[33mcommit a7ae02b013351284ea583bac4c6d335049c540dd[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 22:20:37 2023 +0530
+
+    p1q12
+
+[33mcommit 820c752b457ee533e952714034a30fdfa191b634[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 15:57:34 2023 +0530
+
+    p1q11
+
+[33mcommit 1c7bdac900153c0f246302bd945f2dee4e55cd5a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 15:43:38 2023 +0530
+
+    p1q10
+
+[33mcommit e4d446eb83aa0a5fdd4b6ed8b7a76d45fa47fe49[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 15:07:47 2023 +0530
+
+    p1q9
+
+[33mcommit 83c3226645eb9095aaa8b60911721cf6d1908e2e[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 14:33:53 2023 +0530
+
+    p1q7
+
+[33mcommit e0113c6700e35c9e152a640365feecee8ec9393a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 14:16:56 2023 +0530
+
+    p1q8
+
+[33mcommit 78e0d0ac50a6fc760d8ef8caa7bad4132ee076db[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 14:09:11 2023 +0530
+
+    p1q7
+
+[33mcommit fb75f5f61ac944987e5b9cd54d3dd0019076c607[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Fri May 12 13:55:45 2023 +0530
+
+    p1q6
+
+[33mcommit 55796f34073dc3d6db78975cce0161c3616764f9[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 1 20:04:25 2023 +0530
+
+    p1q5
+
+[33mcommit 09a728089b198b1879041bcbf04d3e9332a5c107[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 1 19:59:26 2023 +0530
+
+    p1q4
+
+[33mcommit c10efb0224aab43f3afe5c30b80e07ec0a17c145[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 1 19:54:14 2023 +0530
+
+    p1q3
+
+[33mcommit 5606c2bb5beb53723d46e6016ab8d1103b917da5[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Mon May 1 19:41:39 2023 +0530
+
+    p1q3
+
+[33mcommit 8d59dafc800450e8f01d8d5535641e8690b1066a[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 20:10:17 2023 +0530
+
+    p1q2
+
+[33mcommit 5d7184e1fe2eac5667e612291d6acdc624bbaf90[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 20:07:27 2023 +0530
+
+    p1q1
+
+[33mcommit 272493cc0d862ba9dd81f84dce4acc99867625f1[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 00:36:47 2023 +0530
+
+    p0q6
+
+[33mcommit b718157b355ca2300cd843d01e3de5a49f6663be[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 00:36:09 2023 +0530
+
+    p0q5
+
+[33mcommit c26171261b5066cddec0ab953770dfbcb1d7ed89[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 00:34:42 2023 +0530
+
+    p0q4
+
+[33mcommit a8c6c840086e7ceda179deaa73b29c2c983fd186[m
+Author: Pulkit <kpulkit15234@gmail.com>
+Date:   Sun Apr 30 00:32:31 2023 +0530
+
+    Initial Commit
