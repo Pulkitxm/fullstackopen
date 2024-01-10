@@ -1,33 +1,31 @@
-interface result {
-	days:number,
-	trainingDays:number,
-	target:number,
-	avgTime:number,
-	rating: 1 | 2 | 3,
-	remarks: string
+export interface result {
+  periodLength: number;
+  trainingDays: number;
+  target: number;
+  average: number;
+  rating: 1 | 2 | 3;
+  ratingDescription: string;
+  success: boolean;
 };
 
 
 
-const exerciseCalculator = ( arr:Array<number>):result	=> {
-	try{
-		const target:number = Number(process.argv[2]);
-
-		if(isNaN(target)){
-			throw new Error("Target should be a number");
-		}
-		return {
-			days:arr.length,
-			target,
-			trainingDays:arr.filter(a=>a!=0).length,
-			avgTime:arr.reduce((a,b)=>a+b)/arr.length,
-			rating:1,
-			remarks:"Good"
-		}
-	}catch(err){
-		console.log(err.message);
-	}
-
-}
-
-console.log(exerciseCalculator([3, 0, 2, 4.5, 0, 3, 1]));
+export const exerciseCalculator = (arr: Array<number>, target:number): result | void => {
+  try {
+    if (isNaN(target)) {
+      throw new Error("Target should be a number");
+    }
+    const trainingDays = arr.filter((a) => a != 0).length;
+    return {
+      periodLength: arr.length,
+      target,
+      trainingDays,
+      average: arr.reduce((a, b) => a + b) / arr.length,
+      rating: 1,
+      ratingDescription: "Good",
+      success:trainingDays>=target,
+    };
+  } catch (err) {
+	  console.log(err.message);
+  }
+};
