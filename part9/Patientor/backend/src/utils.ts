@@ -60,6 +60,7 @@ const toNewDiaryEntry = (object: unknown): NewPatientType => {
       ssn: ssnParser(object.ssn),
       gender: genderParser(object.gender),
       occupation: occupationParser(object.occupation),
+      entries:[]
     };
   }
   throw new Error("Incorrect Data: some fields are missing");

@@ -8,6 +8,11 @@ export const getPatients = (): PatientType[] => {
   return patients;
 };
 
+export const getPatient = (id:string): PatientType => {
+  const pt = patients.filter(patient=>patient.id===id)[0] as PatientType;
+  return pt;
+};
+
 export const getNonSensitivePatients = (): NonSensitivePatientType[] => {
   return patients.map(({id, name, dateOfBirth, gender, occupation}) => ({
     id,

@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getNonSensitivePatients,
   addPatient,
+  getPatient,
 } from "../services/patientServices";
 import toNewDiaryEntry from "../utils";
 
@@ -9,6 +10,11 @@ const router = Router();
 
 router.get("/", (_req, res) => {
   res.send(getNonSensitivePatients());
+});
+
+router.get("/:id", (req, res) => {
+  const {id}:{id:string} = req.params;
+  res.send(getPatient(id));
 });
 
 router.post("/", (req, res) => {
