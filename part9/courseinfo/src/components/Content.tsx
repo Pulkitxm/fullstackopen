@@ -1,10 +1,12 @@
-import Course from './Course'
-const Content = ({ courseParts }) => {
+import Part from './Part'
+import { CoursePart } from '../types'
+
+const Content = ({ courseParts }: { courseParts :CoursePart[]}) => {
     return (<>
             {
                 courseParts.map((coursePart, idx) => {
                     return (
-                        <Course name={coursePart.name} exerciseCount={coursePart.exerciseCount} key={idx} />
+                        <Part part={coursePart} key={idx} />
                     )
                 })
             }
