@@ -19,11 +19,11 @@ const genderOptions: GenderOption[] = Object.values(Gender).map(v => ({
 }));
 
 const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
-  const [name, setName] = useState('');
-  const [occupation, setOccupation] = useState('');
-  const [ssn, setSsn] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [gender, setGender] = useState(Gender.Other);
+  const [name, setName] = useState('John McClane');
+  const [occupation, setOccupation] = useState('New york city cop');
+  const [ssn, setSsn] = useState('090786-122X');
+  const [dateOfBirth, setDateOfBirth] = useState('1986-07-09');
+  const [gender, setGender] = useState(Gender.Male);
 
   const onGenderChange = (event: SelectChangeEvent<string>) => {
     event.preventDefault();
