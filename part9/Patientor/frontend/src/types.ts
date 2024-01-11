@@ -11,6 +11,7 @@ export enum Gender {
 }
 
 export interface Patient {
+  filter(arg0: (i: any) => boolean): unknown;
   id: string;
   name: string;
   occupation: string;
