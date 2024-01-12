@@ -1,10 +1,26 @@
-import Box from '@mui/material/Box';
+import { useState,useEffect } from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { FixedSizeList } from 'react-window';
-import { Entry } from '../../types';
+import { Entry,Diagnosis } from '../../types';
+import services from '../../services/patients';
 export default function VirtualizedList({ list }: { list: Entry }) {
+
+    const [diagnosis, setDiagnosis] = useState<Diagnosis[]>();
+    useEffect(() => {
+        const fetchDiagnoses = async () => {
+            const newDiagnosisPromises = list.diagnosisCodes?.map(async (i) => {
+                const res = await services.getDiagnosisByCode(i);
+                return res;
+            }) || [];
+            const newDiagnosis = await Promise.all(newDiagnosisPromises);
+            setDiagnosis(newDiagnosis);
+
+        };
+        fetchDiagnoses();
+    }, []);
+
+    
     switch (list.type) {
         case "OccupationalHealthcare":
             return (<ListItem style={{ height: "200px", width: "100%" }} component="div" disablePadding>
@@ -20,7 +36,11 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         <br />
                         Employer Name: {`${list.employerName}`}
                         <br />
-                        Diagnosis Codes: {list.diagnosisCodes?.reduce((a, b) => a + ", " + b)}
+                        {
+                            diagnosis && <>
+                                Diagnosis Codes: {diagnosis?.reduce((a, b) => a + ", " + b)}
+                            </>
+                        }
                         <br />
                         Sick-Leave: {list.sickLeave?.startDate} - {list.sickLeave?.endDate}
                     </ListItemText>
@@ -38,7 +58,11 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         <br />
                         Specialist: {`${list.specialist}`}
                         <br />
-                        Diagnosis Codes: {list.diagnosisCodes?.reduce((a, b) => a + ", " + b)}
+                        {
+                            diagnosis && <>
+                                Diagnosis Codes: {diagnosis[0]?.map((a) => (a.name + " "))}
+                            </>
+                        }
                         <br />
                         Discharge:
                         <br />
@@ -60,7 +84,11 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         <br />
                         Specialist: {`${list.specialist}`}
                         <br />
-                        Diagnosis Codes: {list.diagnosisCodes?.reduce((a, b) => a + ", " + b)}
+                        {
+                            diagnosis && <>
+                                Diagnosis Codes: {diagnosis[0]?.map((a) =>( a.name + " "))}
+                            </>
+                        }
                         <br />
                         Health Check Rating: {list.healthCheckRating}
                     </ListItemText>
