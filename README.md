@@ -1,14 +1,18 @@
 # This is [Pulkitxm's](https://devpulkit.vercel.app/) [FullStackOpen](https://fullstackopen.com) Course's Reposittory
 
-## Certificates
+## Certificates (9 Credits)
 
-- FullStackOpen
+- FullStackOpen (7 Credists)
   
-![5 Credits ](./Certificates/certificate-fullstack-5.png)
+![7 Credits ](./Certificates/certificate-fullstack.png)
 
-- GraphQl
+- GraphQl (1 Credit)
   
 ![5 Credits ](./Certificates/certificate-graphql.png)
+
+- TypeScript (1 Credit)
+  
+![5 Credits ](./Certificates/certificate-typescript.png)
 
 There are 13 parts in the course and this repository contains all the exercises of it in there separate directories . To locate a specific question of a part there is a dedicated commit
 Ex - to read the solution of first question of third part you can search a commit like p3q1
@@ -26,6 +30,8 @@ Ex - to read the solution of first question of third part you can search a commi
 - Redux (State Management Tools)
 - React-query (Transact Query, managing and storing data retrieved from the server)
 - Apolo GraphQl ( Communicating with servers)
+- TypeScript
+- React Native (Android & IOS Apps)
 
 ## Course Structure
 
