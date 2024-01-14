@@ -38,7 +38,7 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         <br />
                         {
                             diagnosis && <>
-                                Diagnosis Codes: {diagnosis?.reduce((a, b) => a + ", " + b)}
+                                Diagnosis Codes: {diagnosis[0]?.map((a) => (a.name + " "))}
                             </>
                         }
                         <br />
