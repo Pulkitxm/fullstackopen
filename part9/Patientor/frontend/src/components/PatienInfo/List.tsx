@@ -30,8 +30,6 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         <br />
                         Date: {`${list.date}`}
                         <br />
-                        Type: {`${list.type}`}
-                        <br />
                         Specialist: {`${list.specialist}`}
                         <br />
                         Employer Name: {`${list.employerName}`}
@@ -53,8 +51,6 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         Description: {`${list.description}`}
                         <br />
                         Date: {`${list.date}`}
-                        <br />
-                        Type: {`${list.type}`}
                         <br />
                         Specialist: {`${list.specialist}`}
                         <br />
@@ -79,8 +75,6 @@ export default function VirtualizedList({ list }: { list: Entry }) {
                         Description: {`${list.description}`}
                         <br />
                         Date: {`${list.date}`}
-                        <br />
-                        Type: {`${list.type}`}
                         <br />
                         Specialist: {`${list.specialist}`}
                         <br />

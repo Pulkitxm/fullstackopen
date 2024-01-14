@@ -80,11 +80,11 @@ router.get("/:id/entries", (req, res) => {
 // }
 
 router.post("/:id/entries", (req, res) => {
+  console.log("post");
   try {
     const { id } = req.params;
-    const body = req.body;  
-    const object:NewEntry = utils.toNewEntry(body) as NewEntry;
-    console.log(object);
+    const body = req.body;
+    const object: NewEntry = utils.toNewEntry(body) as NewEntry;
     const addedPatient = addEntry(id,object);
     res.json(addedPatient);
     
@@ -93,6 +93,7 @@ router.post("/:id/entries", (req, res) => {
     if (err instanceof Error) {
       errMessage += "Error: " + err.message;
     }
+    console.log(errMessage);
     res.status(400).send({
       error: errMessage,
     });

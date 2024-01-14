@@ -23,7 +23,7 @@ const PatientInfo = () => {
         const entries = patient.entries as [];
         return (
             <div>
-                <Card name={name} ssn={ssn} occupation={occupation} gender={gender} entries={entries} />
+                <Card name={name} ssn={ssn} occupation={occupation} gender={gender} entries={entries} id={id || ''} />
             </div>
         );
     } else {

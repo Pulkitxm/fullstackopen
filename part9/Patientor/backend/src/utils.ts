@@ -3,6 +3,12 @@ import { NewPatientType, Gender, NewEntry, HealthCheckRating } from "./types";
 const isString = (str: unknown): str is string => {
   return typeof str === "string" || str instanceof String;
 };
+const isHealthCheckRating = (rating: unknown): rating is HealthCheckRating => {
+  return (
+    typeof rating === "number" &&
+    Object.values(HealthCheckRating).includes(rating)
+  );
+};
 const isStringArr = (arr: unknown): arr is string[] => {
   if (Array.isArray(arr)) {
     for (const element of arr) {
@@ -132,14 +138,14 @@ const sickLeaveEndParser = (sickLeaveEnd: unknown): string => {
   return sickLeaveEnd;
 };
 const healthCheckRatingParser = (
-  healthCheckRatingParser: unknown
+  healthCheckRating: unknown
 ): HealthCheckRating => {
-  if (!healthCheckRatingParser || !isString(healthCheckRatingParser)) {
-    throw new Error("Incorrect or missing healthCheckRating ");
+  if (!isHealthCheckRating(healthCheckRating)) {
+    throw new Error("Incorrect or missing healthCheckRating");
   }
-  const val = healthCheckRatingParser as unknown as HealthCheckRating;
-  return val;
+  return healthCheckRating;
 };
+
 
 const toNewEntry = (body: {
   description: unknown;
@@ -162,10 +168,10 @@ const toNewEntry = (body: {
     throw new Error("Information is incomplete");
   }
 
-  const t1 = body.dischargeDate && body.dischargeCriterio;
-  const t2 = body.employerName && body.sickLeaveStart && body.sickLeaveEnd;
-  const t3 = body.healthCheckRating;
-  
+  const t1 = body.dischargeDate!=undefined && body.dischargeCriterio!=undefined;
+  const t2 = body.employerName!=undefined && body.sickLeaveStart!=undefined && body.sickLeaveEnd!=undefined;
+  const t3 = body.healthCheckRating!=undefined;
+
   if (!(t1 || t2 || t3)) {
     throw new Error("Information provided doesn't fall under any Entry type");
   }

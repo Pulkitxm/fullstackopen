@@ -10,7 +10,7 @@ interface Props {
   error?: string;
 }
 
-const AddPatientModal = ({ modalOpen, onClose, onSubmit, error }: Props) => (
+const AddEntryModal = ({ modalOpen, onClose, onSubmit, error }: Props) => (
   <Dialog fullWidth={true} open={modalOpen} onClose={() => onClose()}>
     <DialogTitle>Add a new patient</DialogTitle>
     <Divider />
@@ -21,4 +21,4 @@ const AddPatientModal = ({ modalOpen, onClose, onSubmit, error }: Props) => (
   </Dialog>
 );
 
-export default AddPatientModal;
+export default AddEntryModal;
