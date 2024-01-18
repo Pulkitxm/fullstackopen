@@ -1,18 +1,41 @@
 # This is [Pulkitxm's](https://devpulkit.vercel.app/) [FullStackOpen](https://fullstackopen.com) Course's Reposittory
 
-## Certificates (9 Credits)
+## Certificates (10 Credits)
 
-- FullStackOpen (7 Credists)
+- [FullStackOpen (7 Credists)](https://github.com/Pulkitxm/rate-repository-app)
   
-![7 Credits ](./Certificates/certificate-fullstack.png)
+  <a href='/' >
+    <div style="text-align:center;">
+        <img src="./Certificates/certificate-fullstack.png" alt="7 Credits" width="500rem">
+    </div>
+  </a>
 
-- GraphQl (1 Credit)
+- [GraphQl (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
   
-![5 Credits ](./Certificates/certificate-graphql.png)
+  <a href='https://github.com/Pulkitxm/fullstackopen/tree/main/part8'>
+    <div style="text-align:center;">
+        <img src="./Certificates/certificate-graphql.png" alt="7 Credits" width="500rem">
+    </div>
+  </a>
 
-- TypeScript (1 Credit)
+- [TypeScript (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
   
-![5 Credits ](./Certificates/certificate-typescript.png)
+  <a href='https://github.com/Pulkitxm/fullstackopen/tree/main/part9'>
+    <div style="text-align:center;">
+        <img src="./Certificates/certificate-typescript.png" alt="7 Credits" width="500rem">
+    </div>
+  </a>
+
+- [React Native](https://github.com/Pulkitxm/rate-repository-app)
+
+- [CI/CD (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
+  
+  <a href='https://github.com/Pulkitxm/full-stack-open-pokedex'>
+    <div style="text-align:center;">
+        <img src="./Certificates/certificate-cicd.png" alt="7 Credits" width="500rem">
+    </div>
+  </a>
+
 
 There are 13 parts in the course and this repository contains all the exercises of it in there separate directories . To locate a specific question of a part there is a dedicated commit
 Ex - to read the solution of first question of third part you can search a commit like p3q1
@@ -32,6 +55,7 @@ Ex - to read the solution of first question of third part you can search a commi
 - Apolo GraphQl ( Communicating with servers)
 - TypeScript
 - React Native (Android & IOS Apps)
+- CI/CD (Github Actions)
 
 ## Course Structure
 
