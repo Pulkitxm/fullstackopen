@@ -1,9 +1,17 @@
 # This is [Pulkitxm's](https://devpulkit.vercel.app/) [FullStackOpen](https://fullstackopen.com) Course's Reposittory
 
+## University Credits
+
+<center>
+  <a href='./Certificates/Pulkit Pulkit.pdf'>
+    <img src="./Certificates/uni_credits.jpg" alt="7 Credits" width="500rem">
+  </a>
+</center>
+  
 ## Certificates (10 Credits)
 
 - [FullStackOpen (7 Credists)](https://github.com/Pulkitxm/rate-repository-app)
-  
+
   <a href='/' >
     <div style="text-align:center;">
         <img src="./Certificates/certificate-fullstack.png" alt="7 Credits" width="500rem">
@@ -11,7 +19,7 @@
   </a>
 
 - [GraphQl (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
-  
+
   <a href='https://github.com/Pulkitxm/fullstackopen/tree/main/part8'>
     <div style="text-align:center;">
         <img src="./Certificates/certificate-graphql.png" alt="7 Credits" width="500rem">
@@ -19,7 +27,7 @@
   </a>
 
 - [TypeScript (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
-  
+
   <a href='https://github.com/Pulkitxm/fullstackopen/tree/main/part9'>
     <div style="text-align:center;">
         <img src="./Certificates/certificate-typescript.png" alt="7 Credits" width="500rem">
@@ -29,13 +37,12 @@
 - [React Native](https://github.com/Pulkitxm/rate-repository-app)
 
 - [CI/CD (1 Credit)](https://github.com/Pulkitxm/rate-repository-app)
-  
+
   <a href='https://github.com/Pulkitxm/full-stack-open-pokedex'>
     <div style="text-align:center;">
         <img src="./Certificates/certificate-cicd.png" alt="7 Credits" width="500rem">
     </div>
   </a>
-
 
 There are 13 parts in the course and this repository contains all the exercises of it in there separate directories . To locate a specific question of a part there is a dedicated commit
 Ex - to read the solution of first question of third part you can search a commit like p3q1
